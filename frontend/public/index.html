@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Home Page</title>
+        <meta name="Alan Copa" content="Student Name">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <script src="./js/ejs.min.js"></script>
+        <script src="./js/routes.js"></script>
+        <script src="./js/views.js"></script>
+        <script src="./js/api-client.js"></script>
+    </head> 
+
+    <body onload="init()"> 
+        <header id="site_title" class="centered">
+            <h1>No Home? No Problem.</h1>
+        </header>
+        <h2>Find a place to stay</h2>
+        <form id="search_form" action="/search" method="get">
+            <input type="text" id="search" name="search" placeholder="Search by city or country" required></input>
+            <select id="search" name="search" placeholder="Search by city or country" required>
+                <option value="city">City</option>
+                <option value="country">Country</option>
+            </select>
+            <button id="search_button" data-action="search" type="submit">Search</button>
+        </form>
+
+        <main class="home_page centered">
+            
+            <section id="search_results">
+                <h3>Search Results</h3>
+                <section id="search_results_list">
+                    
+                </section>
+            </section>
+            
+        </main>
+
+        <footer class="site_footer centered"></footer>
+
+
+    </body>
+
+</html>
+
