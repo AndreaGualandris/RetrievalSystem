@@ -18,7 +18,9 @@ class MySpider(scrapy.Spider):
                         'address': houses.css(".property-address.js-url::text").get(),
                         'prize': houses.css('.property-pricing::text').get(),
                         'beds': houses.css('.property-beds::text').get(),
-                        'urlImage': houses.css('div.carouselInner .item::attr(style)').get()
+                        'urlImage': houses.css('div.carouselInner .item.active::attr(style)').get(),
+                        'urlHouse': houses.css('.placard.placard-option-diamond.has-header.js-diamond::attr(data-url)').get()
+                        
                     }
 
         next_page = response.urljoin("https://www.apartments.com/chicago-il/" + str(self.i))

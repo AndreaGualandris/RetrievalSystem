@@ -38,11 +38,18 @@ class RentCafeSpider(scrapy.Spider):
                 max_bed = houseInfos.css(".listing-beds .data-beds:nth-child(3)::text").get()
                 beds = str(min_bed) + "-" + str(max_bed)
 
+                urlImage = response.css('.listing-presentation .listing-presentation-extra-photos.row.map-hide img::attr(data-src)').get()
+
+                if urlImage == None:
+                    urlImage = response.css('.listing-presentation .lazy.lazyload.cursor-pointer::attr(data-src)').get()
+
                 yield {
                     'title': houseInfos.css('.listing-name.building-name a::text').get(),
                     'address': address,
                     'prize': prize,
-                    'beds': beds
+                    'beds': beds,
+                    'urlImage': urlImage,                  
+                    'urlHouse': houseInfos.css('.listing-action-bar a::attr(href)').get()
                 }
 
 
