@@ -1,13 +1,17 @@
 
 <% query_results.forEach((result) => { %>
-    <section id="<%= result.relevance %>" class="search_result">
+    <section id="<%= result.relevance %>" class="search_result" onclick="window.location.href = '<%= result.urlHouse %>'">
+        <img class="search_result_image" src="<%= result.urlImage %>" alt="image">
+
         <h4 class="search_result_title"><span><%= result.title %></span></h4>
-        <p class="search_result_description"><span><%= result.description %></span></p>
+        <p class="search_result_address"><span><%= result.address %></span></p>
+
         <p class="search_result_price"><span><%= result.price %></span></p>
-        <p class="search_result_location"><span><%= result.location %></span></p>
-        <p class="search_result_rating"></p>
+        <p class="search_result_beds"><span><%= result.beds %></span></p>
+
+        <!-- <p class="search_result_rating"></p>
         <p class="search_result_reviews"></p>
-        <p class="search_result_link"></p>
+        <p class="search_result_link"></p> -->
     </section>
 <% }); %> 
 

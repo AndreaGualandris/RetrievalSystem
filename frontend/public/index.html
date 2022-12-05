@@ -18,9 +18,10 @@
         <header id="site_title" class="centered">
             <h1>No Home? No Problem.</h1>
         </header>
-        <h2>Find a place to stay</h2>
+
+        <h2 class="centered">Find a place to stay:</h2>
         <form id="search_form" action="/search" method="get">
-            <input type="text" id="search" name="search" placeholder="Search by city or country" required></input>
+            <input type="text" id="search" name="search" placeholder="Search by city or country" ></input>
             <select id="search" name="search" placeholder="Search by city or country" required>
                 <option value="city">City</option>
                 <option value="country">Country</option>
@@ -28,10 +29,10 @@
             <button id="search_button" data-action="search" type="submit">Search</button>
         </form>
 
-        <main class="home_page centered">
-            
+        <main class="home_page">
+
             <section id="search_results">
-                <h3>Search Results</h3>
+                <h3></h3>
                 <section id="search_results_list">
                     
                 </section>
@@ -40,7 +41,6 @@
         </main>
 
         <footer class="site_footer centered"></footer>
-
 
     </body>
 

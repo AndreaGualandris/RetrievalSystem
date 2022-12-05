@@ -2,7 +2,7 @@
 body {
     display: grid;
     grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-rows: 0.5fr 0.2fr 0.3fr 3fr 0.2fr;
+    grid-template-rows: 0.5fr 80px 100px 4fr 0.2fr;
     grid-template-areas: 
             "title title title"
             ". titlebar ."
@@ -15,12 +15,7 @@ body {
     min-width: 1vw;
     min-height: 1vh;
 }
-
-/* 
-border: 1px solid rgb(255, 255, 255);
-border-radius: 25px ; */
-
-        
+       
 .centered {
     display: flex;
     justify-content: center;
@@ -42,21 +37,27 @@ h2 {
 
 #search_form {
     grid-area: bar;
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+}
+#search_form input, #search_form select, #search_form button {
+    border-radius: 12px;
+    margin: 0.5em;
 }
 
-#search_button {
+/* #search_button {
     position: right;
-}
+} */
 
 main.home_page {
     grid-area: main;
 }
 
-.search_results {
+#search_results {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    /* flex-direction: column;   */
+    flex-direction: column;
+    padding: 1%;
 }
 
 #search_results_list {
@@ -68,18 +69,62 @@ main.home_page {
 
 .search_result {
     display: grid;
-    grid-template-columns: 1fr ;
-    grid-template-rows: 0.2fr 0.2fr 0.2fr 0.2fr;
+    grid-template-columns: 1fr 0.8fr 0.6fr;
+    grid-template-rows: 0.6fr 0.6fr;
     grid-template-areas: 
-            "title"
-            "description"
-            "price"
-            "location";
+            "image title price"
+            "image address beds";
     width: 100%;
     height: 100%;
     margin: 0;
     min-width: 1vw;
     min-height: 1vh;
+    /* border: 1px solid rgb(255, 0, 0); */
+    border-radius: 12px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+
+}
+.search_result:hover {
+    background-color: #000000;
+    opacity: 0.7;
+    transform: scale(1.05);
+    transition-duration: 1000ms;
+}
+
+.search_result_image {
+    grid-area: image;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px 12px 12px 12px;
+}
+.search_result_title, .search_result_address, .search_result_price,  .search_result_beds {
+    color: rgb(218, 15, 15);
+    display: flex;
+    /* text-align: center; */
+    align-items: center;
+    justify-content: center;
+}
+
+.search_result_title {
+    grid-area: title;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.search_result_address {
+    grid-area: address;
+    font-size: 1em;
+}
+
+.search_result_price {
+    grid-area: price;
+    font-size: 1em;
+}
+
+.search_result_beds {
+    grid-area: beds;
+    font-size: 1em;
 }
 
 footer.site_footer {

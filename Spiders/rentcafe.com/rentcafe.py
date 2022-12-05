@@ -17,15 +17,15 @@ class RentCafeSpider(scrapy.Spider):
     #         yield scrapy.Request(url=url, callback=self.parse)
    
     def parse(self, response):
-        # get the prize of the apartment
+        # get the price of the apartment
 
         # SENZA CICLO FOR E USANDO GET ALL HO TUTTE LE COSE DELLA PAGINA sotto forma di array
         for h in response.css('.listings'):
             for houseInfos in h.css(".listing-details"):
 
-                min_prize = houseInfos.css('li.data-rent:nth-child(1)::text').get()
-                max_prize = houseInfos.css('li.data-rent:nth-child(2)::text').get()
-                prize = str(min_prize) + " - " + str(max_prize)
+                min_price = houseInfos.css('li.data-rent:nth-child(1)::text').get()
+                max_price = houseInfos.css('li.data-rent:nth-child(2)::text').get()
+                price = str(min_price) + " - " + str(max_price)
 
                 streetAddress = houseInfos.css(".listing-address.building-address span:nth-child(1)::text").get()
                 addressLocality = houseInfos.css(".listing-address.building-address span:nth-child(2)::text").get()
@@ -46,7 +46,7 @@ class RentCafeSpider(scrapy.Spider):
                 yield {
                     'title': houseInfos.css('.listing-name.building-name a::text').get(),
                     'address': address,
-                    'prize': prize,
+                    'price': price,
                     'beds': beds,
                     'urlImage': urlImage,                  
                     'urlHouse': houseInfos.css('.listing-action-bar a::attr(href)').get()
