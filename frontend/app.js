@@ -5,9 +5,6 @@ const methodOverride = require('method-override');
 const multer = require('multer');
 const axios = require('axios')
 
-const fs = require('fs-extra');
-
-//init framework
 const app = express();
 
 app.use(logger('dev'));
@@ -25,18 +22,14 @@ const ejsc = require('ejsc-views');
 ejsc.compile();
 
 
-//fetch with axios to http://localhost:8983/solr/Houses_collection/select? and construct the query for solr
 app.get('/search', (req, res) => {
   const query = req.query.query;
-
-  // const url = `http://localhost:8983/solr/Houses_collection/search/`;
 
  axios({
   method: 'get',
   url: `http://localhost:8983/solr/Houses_collection/query?qf=title^3.0+beds^1.5+address^2.0+price^1.0&indent=true&q.op=AND&q=*${query}*&defType=edismax`
  }).then((response) => {
     console.log(response.data.response.docs);
-    // res.render('search-result', {"query_results": response.data.response.docs})
     res.status(200).json(response.data.response.docs)
  })
 });
