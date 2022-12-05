@@ -1,20 +1,9 @@
-/**
- * Web Atelier 2022  Exercise 7 - Single-Page Web Applications with Fetch and Client-side Views
- *
- * Student: __STUDENT NAME__
- *
- * Main Server Application
- *
- * version 1289 Wed Nov 02 2022 17:01:56 GMT+0100 (Central European Standard Time)
- *
- */
-
-//require framework and middleware dependencies
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const methodOverride = require('method-override');
-const multer  = require('multer');
+const multer = require('multer');
+const axios = require('axios')
 
 const fs = require('fs-extra');
 
@@ -23,66 +12,54 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));    // parse application/x-www-form-urlencoded
-app.use(express.json({limit: '4MB'}));    // parse application/json
+app.use(express.json({ limit: '4MB' }));    // parse application/json
 app.use(multer().none());   //parse multipart/form-data
 
-app.use(express.static(path.join(__dirname, 'public'), {index: "index.html"}));
+app.use(express.static(path.join(__dirname, 'public'), { index: "index.html" }));
 
 app.use(methodOverride('_method'));
 
 app.set('view engine', 'ejs');
 
-// compile view templates automatically
 const ejsc = require('ejsc-views');
 ejsc.compile();
 
-//controllers
-// const routers = require('./routes');
 
-// app.use(routers.home);
-// app.use('/games', routers.games);
-// app.use('/high_scores', routers.high_scores);
+//fetch with axios to http://localhost:8983/solr/Houses_collection/select? and construct the query for solr
+app.get('/search', (req, res) => {
+  const query = req.query.query;
 
-//default fallback handlers
-// catch 404 and forward to error handler
+  // const url = `http://localhost:8983/solr/Houses_collection/search/`;
 
-// error handlers
+ axios({
+  method: 'get',
+  url: `http://localhost:8983/solr/Houses_collection/query?qf=title^3.0+beds^1.5+address^2.0+price^1.0&indent=true&q.op=AND&q=*${query}*&defType=edismax`
+ }).then((response) => {
+    console.log(response.data.response.docs);
+    // res.render('search-result', {"query_results": response.data.response.docs})
+    res.status(200).json(response.data.response.docs)
+ })
+});
 
-// development error handler
-// will print stacktrace
-//if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.json({
-      message: err.message,
-      error: err
-    });
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  res.json({
+    message: err.message,
+    error: err
   });
-  //}
-  
-  // production error handler
-  // no stacktraces leaked to user
-  // app.use(function(err, req, res, next) {
-    //   res.status(err.status || 500);
-    //   res.json({
-      //     message: err.message,
-      //     error: {}
-      //   });
-      // });
-      
-      
-      
-      app.use(function(req, res, next) {
-          const err = new Error('Not Found');
-          err.status = 404;
-          next(err);
-        });
-      //start server
+});
+
+app.use(function (req, res, next) {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+//start server
 app.set('port', process.env.PORT || 8888);
 
 var server = require('http').createServer(app);
 
-server.on('listening', function() {
+server.on('listening', function () {
   console.log('Express server listening on port ' + server.address().port);
 });
 
