@@ -14,7 +14,7 @@ class MySpider(scrapy.Spider):
                 # print(houses.css(".js-placardTitle.title::text").get())
                 if houses.css(".js-placardTitle.title::text").get() != None:
 
-                    # NEW
+                    # NEW CODE
                     urlImage = houses.css('div.carouselInner .item.active::attr(style)').get()
                     if urlImage == None: # per gli altri dopo i primi 4
                         urlImage = houses.css('div.carouselInner .item.active::attr(data-image)').get()
