@@ -2,16 +2,13 @@ import scrapy
 
 class MySpider(scrapy.Spider):
     name = 'ApartmentsComSpider'
-    start_urls = ["https://www.apartments.com/chicago-il/"]
+    start_urls = ["https://www.apartments.com/joliet-il/"]
     i=1
 
     def parse(self, response):
         self.i+=1
-        # for houses in response.css(".placard.placard-option-diamond.has-header.js-diamond"):
         for h in response.css(".placardContainer"):
-            j = 0
             for houses in h.css(".mortar-wrapper"):
-                # print(houses.css(".js-placardTitle.title::text").get())
                 if houses.css(".js-placardTitle.title::text").get() != None:
 
                     # NEW CODE
@@ -27,11 +24,11 @@ class MySpider(scrapy.Spider):
                         'price': houses.css('.property-pricing::text').get(),
                         'beds': houses.css('.property-beds::text').get(),
                         'urlImage': urlImage,
-                        'urlHouse': houses.css('.placard.placard-option-diamond.has-header.js-diamond::attr(data-url)').get(),
-                        
+                        'urlHouse': houses.css('a.property-link::attr(href)').get(), # aurora 
+                        # 'urlHouse': houses.css('.placard.placard-option-diamond.has-header.js-diamond::attr(data-url)').get(), # chicago
+
                     }
         next_page = response.urljoin("https://www.apartments.com/chicago-il/" + str(self.i))
 
-        #    next_page = "https://www.apartments.com/chicago-il/" + str(i) + "/"
         if next_page is not None and self.i < 28:
             yield response.follow(next_page)
