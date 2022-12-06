@@ -9,14 +9,15 @@ class MySpider(scrapy.Spider):
         self.i+=1
         # for houses in response.css(".placard.placard-option-diamond.has-header.js-diamond"):
         for h in response.css(".placardContainer"):
+            j = 0
             for houses in h.css(".mortar-wrapper"):
                 # print(houses.css(".js-placardTitle.title::text").get())
                 if houses.css(".js-placardTitle.title::text").get() != None:
 
                     # NEW
                     urlImage = houses.css('div.carouselInner .item.active::attr(style)').get()
-                    if urlImage == None:
-                        urlImage = 'MANNAGGIA IL SELECTOR NON VA' 
+                    if urlImage == None: # per gli altri dopo i primi 4
+                        urlImage = houses.css('div.carouselInner .item.active::attr(data-image)').get()
                     if 'background-image: url(\"' in urlImage: # parsing urlImage per pulirlo
                         urlImage = urlImage.replace('background-image: url(\"', '').replace('\");', '')
 
