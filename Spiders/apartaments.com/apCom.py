@@ -10,19 +10,25 @@ class MySpider(scrapy.Spider):
         # for houses in response.css(".placard.placard-option-diamond.has-header.js-diamond"):
         for h in response.css(".placardContainer"):
             for houses in h.css(".mortar-wrapper"):
-
-                print(houses.css(".js-placardTitle.title::text").get())
+                # print(houses.css(".js-placardTitle.title::text").get())
                 if houses.css(".js-placardTitle.title::text").get() != None:
+
+                    # NEW
+                    urlImage = houses.css('div.carouselInner .item.active::attr(style)').get()
+                    if urlImage == None:
+                        urlImage = 'MANNAGGIA IL SELECTOR NON VA' 
+                    if 'background-image: url(\"' in urlImage: # parsing urlImage per pulirlo
+                        urlImage = urlImage.replace('background-image: url(\"', '').replace('\");', '')
+
                     yield {
                         'title': houses.css(".js-placardTitle.title::text").get(),
                         'address': houses.css(".property-address.js-url::text").get(),
                         'price': houses.css('.property-pricing::text').get(),
                         'beds': houses.css('.property-beds::text').get(),
-                        'urlImage': houses.css('div.carouselInner .item.active::attr(style)').get(),
-                        'urlHouse': houses.css('.placard.placard-option-diamond.has-header.js-diamond::attr(data-url)').get()
+                        'urlImage': urlImage,
+                        'urlHouse': houses.css('.placard.placard-option-diamond.has-header.js-diamond::attr(data-url)').get(),
                         
                     }
-
         next_page = response.urljoin("https://www.apartments.com/chicago-il/" + str(self.i))
 
         #    next_page = "https://www.apartments.com/chicago-il/" + str(i) + "/"

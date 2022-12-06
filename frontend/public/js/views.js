@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Mon Dec 05 2022 19:09:18 GMT+0100 (Ora standard dell’Europa centrale)
+//EJS Compiled Views - This file was automatically generated on Tue Dec 06 2022 16:16:13 GMT+0100 (Central European Standard Time)
  ejs.views_include = function(locals) {
      
      return function(path, d) {
@@ -108,7 +108,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.relevance %>\" class=\"search_result\" onclick=\"window.location.href = '<%= result.urlHouse %>'\">\n        <img class=\"search_result_image\" src=\"<%= result.urlImage %>\" alt=\"image\">\n\n        <h4 class=\"search_result_title\"><span><%= result.title %></span></h4>\n        <p class=\"search_result_address\"><span><%= result.address %></span></p>\n\n        <p class=\"search_result_price\"><span><%= result.price %></span></p>\n        <p class=\"search_result_beds\"><span><%= result.beds %></span></p>\n\n        <!-- <p class=\"search_result_rating\"></p>\n        <p class=\"search_result_reviews\"></p>\n        <p class=\"search_result_link\"></p> -->\n    </section>\n<% }); %> \n\n"
+  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.relevance %>\" class=\"search_result\" onclick=\"window.location.href = '<%= result.urlHouse %>'\">\n        <img class=\"search_result_image\" src=\"<%= result.urlImage %>\" alt=\"image\">\n\n        <h4 class=\"search_result_title\"><span><%= result.title %></span></h4>\n        <p class=\"search_result_address\"><span><%= result.address %></span></p>\n\n        <p class=\"search_result_price\"><span><%= result.price %></span></p>\n        <p class=\"search_result_beds\"><span><%= result.beds %></span></p>\n\n        <!-- <p class=\"search_result_city\"><span><%= result.city %></span></p> -->\n\n\n        <!-- <p class=\"search_result_rating\"></p>\n        <p class=\"search_result_reviews\"></p>\n        <p class=\"search_result_link\"></p> -->\n    </section>\n<% }); %> \n\n"
   , __filename = undefined;
 try {
   var __output = "";
@@ -137,11 +137,14 @@ try {
     ; __append("</span></p>\n        <p class=\"search_result_beds\"><span>")
     ; __line = 10
     ; __append(escapeFn( result.beds ))
-    ; __append("</span></p>\n\n        <!-- <p class=\"search_result_rating\"></p>\n        <p class=\"search_result_reviews\"></p>\n        <p class=\"search_result_link\"></p> -->\n    </section>\n")
-    ; __line = 16
+    ; __append("</span></p>\n\n        <!-- <p class=\"search_result_city\"><span>")
+    ; __line = 12
+    ; __append(escapeFn( result.city ))
+    ; __append("</span></p> -->\n\n\n        <!-- <p class=\"search_result_rating\"></p>\n        <p class=\"search_result_reviews\"></p>\n        <p class=\"search_result_link\"></p> -->\n    </section>\n")
+    ; __line = 19
     ;  }); 
     ; __append(" \n\n")
-    ; __line = 18
+    ; __line = 21
   }
   return __output;
 } catch (e) {
@@ -251,7 +254,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.relevance %>\" class=\"search_result\" onclick=\"window.location.href = '<%= result.urlHouse %>'\">\n        <img class=\"search_result_image\" src=\"<%= result.urlImage %>\" alt=\"image\">\n\n        <h4 class=\"search_result_title\"><span><%= result.title %></span></h4>\n        <p class=\"search_result_address\"><span><%= result.address %></span></p>\n\n        <p class=\"search_result_price\"><span><%= result.price %></span></p>\n        <p class=\"search_result_beds\"><span><%= result.beds %></span></p>\n\n        <!-- <p class=\"search_result_rating\"></p>\n        <p class=\"search_result_reviews\"></p>\n        <p class=\"search_result_link\"></p> -->\n    </section>\n<% }); %> \n\n"
+  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.relevance %>\" class=\"search_result\" onclick=\"window.location.href = '<%= result.urlHouse %>'\">\n        <img class=\"search_result_image\" src=\"<%= result.urlImage %>\" alt=\"image\">\n\n        <h4 class=\"search_result_title\"><span><%= result.title %></span></h4>\n        <p class=\"search_result_address\"><span><%= result.address %></span></p>\n\n        <p class=\"search_result_price\"><span><%= result.price %></span></p>\n        <p class=\"search_result_beds\"><span><%= result.beds %></span></p>\n\n        <!-- <p class=\"search_result_city\"><span><%= result.city %></span></p> -->\n\n\n        <!-- <p class=\"search_result_rating\"></p>\n        <p class=\"search_result_reviews\"></p>\n        <p class=\"search_result_link\"></p> -->\n    </section>\n<% }); %> \n\n"
   , __filename = undefined;
 try {
   var __output = "";
@@ -280,11 +283,14 @@ try {
     ; __append("</span></p>\n        <p class=\"search_result_beds\"><span>")
     ; __line = 10
     ; __append(escapeFn( result.beds ))
-    ; __append("</span></p>\n\n        <!-- <p class=\"search_result_rating\"></p>\n        <p class=\"search_result_reviews\"></p>\n        <p class=\"search_result_link\"></p> -->\n    </section>\n")
-    ; __line = 16
+    ; __append("</span></p>\n\n        <!-- <p class=\"search_result_city\"><span>")
+    ; __line = 12
+    ; __append(escapeFn( result.city ))
+    ; __append("</span></p> -->\n\n\n        <!-- <p class=\"search_result_rating\"></p>\n        <p class=\"search_result_reviews\"></p>\n        <p class=\"search_result_link\"></p> -->\n    </section>\n")
+    ; __line = 19
     ;  }); 
     ; __append(" \n\n")
-    ; __line = 18
+    ; __line = 21
   }
   return __output;
 } catch (e) {
