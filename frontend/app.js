@@ -27,7 +27,7 @@ app.get('/search', (req, res) => {
 
  axios({
   method: 'get',
-  url: `http://localhost:8983/solr/Houses_collection/query?qf=title^3.0+beds^1.5+address^2.0+price^1.0&indent=true&q.op=AND&q=*${query}*&defType=edismax`
+  url: `http://localhost:8983/solr/Houses_collection/query?qf=title^3.0+beds^1.5+address^2.0+price^1.0&indent=true&q.op=OR&q=*${query}*&defType=edismax`
  }).then((response) => {
     console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)

@@ -17,7 +17,7 @@ router.get('/search', (req, res) => {
         q: query,
         wt: 'json',
         indent: true,
-        rows: 10
+        rows: 100
     };
 
     axios.get(url, { params: solrQuery })
