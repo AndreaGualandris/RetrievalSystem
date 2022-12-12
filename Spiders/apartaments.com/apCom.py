@@ -2,7 +2,9 @@ import scrapy
 
 class MySpider(scrapy.Spider):
     name = 'ApartmentsComSpider'
-    start_urls = ["https://www.apartments.com/aurora-il/"]
+    # start_urls = ["https://www.apartments.com/il/"]
+    # start_urls = ["https://www.apartments.com/in/"]
+    start_urls = ["https://www.apartments.com/mi/"]
     i=1
 
     def parse(self, response):

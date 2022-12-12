@@ -4,7 +4,9 @@ from scrapy.selector import Selector
 
 class RentCafeSpider(scrapy.Spider):
     name = 'RentCafeSpider'
-    start_urls = ["https://www.rentcafe.com/apartments-for-rent/us/il/chicago/"]
+    # start_urls = ["https://www.rentcafe.com/apartments-for-rent/us/il/"]
+    # start_urls = ["https://www.rentcafe.com/apartments-for-rent/us/in/"]
+    start_urls = ["https://www.rentcafe.com/apartments-for-rent/us/mi/"]
     # def start_requests(self):
     #     urls = []
     #     for i in range(1,28):

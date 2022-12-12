@@ -9,7 +9,11 @@ from scrapy.selector import Selector
 
 class SpiderApartamentFinder(scrapy.Spider):
     name = "ApartamentFinderSpider"
-    start_urls = ["https://www.apartmentfinder.com/Short-Term-Housing/Illinois/Chicago"]
+    # start_urls = ["https://www.apartmentfinder.com/Short-Term-Housing/Illinois"]
+    # start_urls = ["https://www.apartmentfinder.com/Short-Term-Housing/Indina"]
+    start_urls = ["https://www.apartmentfinder.com/Short-Term-Housing/Michigan"]
+
+
     i=1
 
     def parse(self, response):
