@@ -1,20 +1,30 @@
 
 <% query_results.forEach((result) => { %>
-    <section id="<%= result.relevance %>" class="search_result" onclick="window.location.href = '<%= result.urlHouse %>'">
+    <a id="<%= result.relevance %>" class="search_result" onclick="href = '<%= result.urlHouse %>'" target="_blank">
         <img class="search_result_image" src="<%= result.urlImage %>" alt="image">
 
-        <h4 class="search_result_title"><span><%= result.title %></span></h4>
-        <p class="search_result_address"><span><%= result.address %></span></p>
+        <section class="search_result_title">
+            <h4><span><%= result.title %></span></h4>
+        </section>
 
-        <p class="search_result_price"><span><%= result.price %></span></p>
-        <p class="search_result_beds"><span><%= result.beds %></span></p>
+        <section class="label">
+            <p><span>Address:</span></p> 
+            <p><span>Price:</span></p> 
+            <p><span>Price:</span></p> 
+            <p><span>Beds:</span></p> 
+        </section>
+        <section class="values">
+            <p><span><%= result.address %></span></p>
+            <p><span><%= result.price %></span></p>
+            <p><span><%= result.price %></span></p>
+            <p><span><%= result.beds %></span></p>
+        </section>
 
         <!-- <p class="search_result_city"><span><%= result.city %></span></p> -->
-
 
         <!-- <p class="search_result_rating"></p>
         <p class="search_result_reviews"></p>
         <p class="search_result_link"></p> -->
-    </section>
+        </a>
 <% }); %> 
 

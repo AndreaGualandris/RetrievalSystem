@@ -25,22 +25,10 @@ function init() {
         });
     });
 
-    document.querySelector(".searchBar").addEventListener("input", (event) => {
+    document.querySelector("img.home_img").addEventListener("click", (event) => {
         event.preventDefault();
-        console.log("ciao")
-        document.querySelector("#search_results h3").innerHTML = 'Search Results';
         let result_list = document.querySelector("#search_results_list");
         result_list.innerHTML = "";
-        let query = document.querySelector("input#search").value;
-        console.log("query", query);
-
-        fetch(`/search?query=${query}`).then((response) => {
-            return response.json();
-        }).then((response) => {
-            console.log("response", response);
-            result_list.innerHTML += ejs.views_search_result({"query_results":response});
-        });
-    }
-
-    );
+        document.querySelector("#search_results h3").innerHTML = '';
+    });
 } 
