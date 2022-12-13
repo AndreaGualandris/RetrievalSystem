@@ -9,6 +9,7 @@ function load_footer() {
 function init() {
     load_footer();
     let filters = false;
+    let clustering = false;
 
     document.querySelector("form#search_form").addEventListener("submit", (event) => {
         event.preventDefault();
@@ -43,10 +44,24 @@ function init() {
             filters = true;
         }
         else{
-            document.querySelector(".container").removeChild(document.querySelector(".container").lastChild);
+            document.querySelector(".container").removeChild(document.querySelector(".range-slider"));
             filters = false;
         }
 
        
+    });
+
+    document.querySelector("#clustering").addEventListener("click", (event) => {
+        event.preventDefault();
+        if (!clustering){
+            let result_list = document.querySelector("#search_results_list");
+            result_list.innerHTML = "";
+            document.querySelector(".container").innerHTML += ejs.views_clusters();
+            clustering = true;
+        }
+        else{
+            document.querySelector(".container").removeChild(document.querySelector(".cluster"));
+            clustering = false;
+        }
     });
 } 
