@@ -21,7 +21,7 @@ function init() {
             return response.json();
         }).then((response) => {
             console.log("response", response);
-            result_list.innerHTML += ejs.views_search_result({"query_results":response});
+            result_list.innerHTML += ejs.views_search_result({ "query_results": response });
         });
     });
 
@@ -30,5 +30,12 @@ function init() {
         let result_list = document.querySelector("#search_results_list");
         result_list.innerHTML = "";
         document.querySelector("#search_results h3").innerHTML = '';
+    });
+
+    document.querySelector("#filters").addEventListener("click", (event) => {
+        event.preventDefault();
+        let result_list = document.querySelector("#search_results_list");
+        result_list.innerHTML = "";
+        document.querySelector(".container").innerHTML += ejs.views_filters();
     });
 } 

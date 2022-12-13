@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Mon Dec 12 2022 20:15:39 GMT+0100 (Central European Standard Time)
+//EJS Compiled Views - This file was automatically generated on Tue Dec 13 2022 11:37:29 GMT+0100 (Ora standard dell’Europa centrale)
  ejs.views_include = function(locals) {
      
      return function(path, d) {
@@ -6,7 +6,66 @@
          return ejs["views_"+path.replace(/\//g,"_").replace(/-/g,"_")]({...d,...locals}, null, ejs.views_include(locals));
      }
  };
- ejs.views_includes_footer = function(locals, escapeFn, include = ejs.views_include(locals), rethrow
+ ejs.views_filters = function(locals, escapeFn, include = ejs.views_include(locals), rethrow
+) {
+rethrow = rethrow || function rethrow(err, str, flnm, lineno, esc) {
+  var lines = str.split('\n');
+  var start = Math.max(lineno - 3, 0);
+  var end = Math.min(lines.length, lineno + 3);
+  var filename = esc(flnm);
+  // Error context
+  var context = lines.slice(start, end).map(function (line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? ' >> ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'ejs') + ':'
+    + lineno + '\n'
+    + context + '\n\n'
+    + err.message;
+
+  throw err;
+};
+escapeFn = escapeFn || function (markup) {
+  return markup == undefined
+    ? ''
+    : String(markup)
+      .replace(_MATCH_HTML, encode_char);
+};
+var _ENCODE_HTML_RULES = {
+      "&": "&amp;"
+    , "<": "&lt;"
+    , ">": "&gt;"
+    , '"': "&#34;"
+    , "'": "&#39;"
+    }
+  , _MATCH_HTML = /[&<>'"]/g;
+function encode_char(c) {
+  return _ENCODE_HTML_RULES[c] || c;
+};
+;
+var __line = 1
+  , __lines = "<!-- include html for range price filter -->\n<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <span class=\"range-slider__value\">0</span>\n</div>"
+  , __filename = undefined;
+try {
+  var __output = "";
+  function __append(s) { if (s !== undefined && s !== null) __output += s }
+  with (locals || {}) {
+    ; __append("<!-- include html for range price filter -->\n<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <span class=\"range-slider__value\">0</span>\n</div>")
+    ; __line = 5
+  }
+  return __output;
+} catch (e) {
+  rethrow(e, __lines, __filename, __line, escapeFn);
+}
+
+}
+ejs.views_includes_footer = function(locals, escapeFn, include = ejs.views_include(locals), rethrow
 ) {
 rethrow = rethrow || function rethrow(err, str, flnm, lineno, esc) {
   var lines = str.split('\n');
@@ -148,6 +207,65 @@ try {
     ;  }); 
     ; __append(" \n\n")
     ; __line = 31
+  }
+  return __output;
+} catch (e) {
+  rethrow(e, __lines, __filename, __line, escapeFn);
+}
+
+}
+ejs.views_filters = function(locals, escapeFn, include = ejs.views_include(locals), rethrow
+) {
+rethrow = rethrow || function rethrow(err, str, flnm, lineno, esc) {
+  var lines = str.split('\n');
+  var start = Math.max(lineno - 3, 0);
+  var end = Math.min(lines.length, lineno + 3);
+  var filename = esc(flnm);
+  // Error context
+  var context = lines.slice(start, end).map(function (line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? ' >> ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'ejs') + ':'
+    + lineno + '\n'
+    + context + '\n\n'
+    + err.message;
+
+  throw err;
+};
+escapeFn = escapeFn || function (markup) {
+  return markup == undefined
+    ? ''
+    : String(markup)
+      .replace(_MATCH_HTML, encode_char);
+};
+var _ENCODE_HTML_RULES = {
+      "&": "&amp;"
+    , "<": "&lt;"
+    , ">": "&gt;"
+    , '"': "&#34;"
+    , "'": "&#39;"
+    }
+  , _MATCH_HTML = /[&<>'"]/g;
+function encode_char(c) {
+  return _ENCODE_HTML_RULES[c] || c;
+};
+;
+var __line = 1
+  , __lines = "<!-- include html for range price filter -->\n<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <span class=\"range-slider__value\">0</span>\n</div>"
+  , __filename = undefined;
+try {
+  var __output = "";
+  function __append(s) { if (s !== undefined && s !== null) __output += s }
+  with (locals || {}) {
+    ; __append("<!-- include html for range price filter -->\n<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <span class=\"range-slider__value\">0</span>\n</div>")
+    ; __line = 5
   }
   return __output;
 } catch (e) {

@@ -1,50 +1,89 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Home Page</title>
-        <meta name="Alan Copa" content="Student Name">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/style.css" />
+<head>
+    <meta charset="UTF-8" />
+    <title>Home Page</title>
+    <meta name="Alan Copa" content="Student Name">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
 
-        <script src="./js/ejs.min.js"></script>
-        <script src="./js/routes.js"></script>
-        <script src="./js/views.js"></script>
-        <script src="./js/api-client.js"></script>
-    </head> 
+    <script src="./js/ejs.min.js"></script>
+    <script src="./js/routes.js"></script>
+    <script src="./js/views.js"></script>
+    <script src="./js/api-client.js"></script>
+</head>
 
-    <body onload="init()"> 
-        <img class="home_img" src="images/house3.png" alt="logo" />
-        <header id="site_title" class="centered">
-            <h1>No Home? No Problem.</h1>
-        </header>
+<body onload="init()">
 
-        <h2 class="centered">Find a place to stay:</h2>
-        <form id="search_form" action="/search" method="get">
-            <input type="text" id="search" class="searchBar" name="query" placeholder="Search by city or country" ></input>
+    <nav role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <!--
+              Too bad the menu has to be inside of the button
+              but hey, it's pure CSS magic.
+              -->
+            <ul id="menu">
+                <a href="#" id="filters">
+                    <li>Filters</li>
+                </a>
+                <a href="#">
+                    <li>Clustering</li>
+                </a>
+                <a href="#">
+                    <li>About</li>
+                </a>
+                <!-- <a href="#"><li>Info</li></a> -->
+                <!-- <a href="#"><li>Contact</li></a> -->
+                <!-- <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a> -->
+            </ul>
+        </div>
+    </nav>
+
+    <header id="site_title" class="centered">
+        <h1>No Home? No Problem.</h1>
+    </header>
+
+    <img class="home_img" src="images/house5.png" alt="logo" />
+
+
+    <h2 class="centered">Find a place to stay:</h2>
+
+    <form id="search_form" action="/search" method="get">
+        <div class="container">
+            <input type="text" id="search" class="searchBar" name="query"
+                placeholder="Search by city or country"></input>
             <!-- <select id="search" name="filter" class="filter" placeholder="Search by city or country">
                 <option value="-">--</option>
                 <option value="city">City</option>
                 <option value="country">Country</option>
             </select> -->
-            <button id="search_button"  class="searchButt" data-action="search" type="submit">Search</button>
-        </form>
+            <button id="search_button" class="searchButt" data-action="search" type="submit">Search</button>
+        </div>
+        <!-- <div class="range-slider">
+            <input type="range" class="range-slider__range" value="0" min="0" max="100">
+        </div> -->
+    </form>
 
-        <main class="home_page">
 
-            <section id="search_results">
-                <h3></h3>
-                <section id="search_results_list">
-                    
-                </section>
+
+    <main class="home_page">
+
+        <section id="search_results">
+            <h3></h3>
+            <section id="search_results_list">
+
             </section>
-            
-        </main>
+        </section>
 
-        <footer class="site_footer centered"></footer>
+    </main>
 
-    </body>
+    <footer class="site_footer centered"></footer>
+
+</body>
 
 </html>
-
