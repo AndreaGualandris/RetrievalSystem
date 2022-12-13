@@ -1,10 +1,10 @@
 OpenJDK 64-Bit Server VM warning: Failed to reserve shared memory. (error = 1)
 OpenJDK 64-Bit Server VM warning: Failed to reserve shared memory. (error = 12)
 OpenJDK 64-Bit Server VM warning: Failed to reserve shared memory. (error = 12)
-2022-12-12 17:06:09.546 INFO  (main) [] o.e.j.u.log Logging initialized @864ms to org.eclipse.jetty.util.log.Slf4jLog
-2022-12-12 17:06:09.719 INFO  (main) [] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 11.0.17+8-post-Ubuntu-1ubuntu220.04
-2022-12-12 17:06:09.940 INFO  (main) [] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2022-12-12 17:06:09.948 INFO  (main) [] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.0.0
-2022-12-12 17:06:09.948 INFO  (main) [] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in cloud mode on port 7574
-2022-12-12 17:06:09.948 INFO  (main) [] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /home/alan/Desktop/5_semestre/Information_Retrival/project/RetrievalSystem/solr-9.0.0
-2022-12-12 17:06:09.949 INFO  (main) [] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2022-12-12T17:06:09.949029Z
+2022-12-13 11:12:27.214 INFO  (main) [] o.e.j.u.log Logging initialized @833ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-12-13 11:12:27.396 INFO  (main) [] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 11.0.17+8-post-Ubuntu-1ubuntu220.04
+2022-12-13 11:12:27.604 INFO  (main) [] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2022-12-13 11:12:27.614 INFO  (main) [] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.0.0
+2022-12-13 11:12:27.614 INFO  (main) [] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in cloud mode on port 7574
+2022-12-13 11:12:27.615 INFO  (main) [] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /home/alan/Desktop/5_semestre/Information_Retrival/project/RetrievalSystem/solr-9.0.0
+2022-12-13 11:12:27.615 INFO  (main) [] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2022-12-13T11:12:27.615134Z

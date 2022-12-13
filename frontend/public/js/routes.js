@@ -24,6 +24,10 @@ function init() {
         }).then((response) => {
             console.log("response", response);
             result_list.innerHTML += ejs.views_search_result({ "query_results": response });
+            document.querySelector("button.similar").addEventListener("click", (event) => {
+                event.preventDefault();
+                console.log("SIMILAR ITEMS PLSSS")
+            });
         });
     });
 
@@ -64,4 +68,6 @@ function init() {
             clustering = false;
         }
     });
+
+    
 } 
