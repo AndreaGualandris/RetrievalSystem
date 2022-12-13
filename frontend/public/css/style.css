@@ -147,12 +147,13 @@ main.home_page {
 .search_result {
     display: grid;
     grid-template-columns: 1fr 0.2fr 0.8fr;
-    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.3fr;
     grid-template-areas:
         "image title title"
         "image label value"
         "image label value"
-        "image label value";
+        "image label value"
+        "image button button";
     width: 100%;
     height: 100%;
     margin: 0;
@@ -214,6 +215,12 @@ main.home_page {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+button.similar {
+    grid-area: button;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 footer.site_footer {
@@ -339,7 +346,3 @@ a {
 
 
 /* -------------------- END HAMBURGER MENU -------------------- */
-
-button.similar {
-    /* z-index: 19; */
-}

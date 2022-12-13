@@ -1,7 +1,9 @@
 
 <% query_results.forEach((result) => { %>
-    <a id="<%= result.relevance %>" class="search_result" onclick="href = '<%= result.urlHouse %>'" target="_blank">
-        <img class="search_result_image" src="<%= result.urlImage %>" alt="image">
+    <section id="<%= result.relevance %>" data-id="<%= result.id %>" class="search_result" >
+        <a class="search_result_image" onclick="href = '<%= result.urlHouse %>'" target="_blank">
+            <img src="<%= result.urlImage %>" alt="image">
+        </a>
 
         <section class="search_result_title">
             <h4><span><%= result.title %></span></h4>
@@ -10,21 +12,20 @@
         <section class="label">
             <p><span>Address:</span></p> 
             <p><span>Price:</span></p> 
-            <p><span>Price:</span></p> 
             <p><span>Beds:</span></p> 
         </section>
         <section class="values">
             <p><span><%= result.address %></span></p>
             <p><span><%= result.price %></span></p>
             <p><span><%= result.beds %></span></p>
-            <button class="similar" onclick="href = '#'">Similar Houses</button>
         </section>
+        <button class="similar" onclick="href = '#'">Similar Houses</button>
 
         <!-- <p class="search_result_city"><span><%= result.city %></span></p> -->
 
         <!-- <p class="search_result_rating"></p>
         <p class="search_result_reviews"></p>
         <p class="search_result_link"></p> -->
-        </a>
+        </section>
 <% }); %> 
 
