@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Tue Dec 13 2022 11:37:29 GMT+0100 (Ora standard dell’Europa centrale)
+//EJS Compiled Views - This file was automatically generated on Tue Dec 13 2022 11:42:27 GMT+0100 (Ora standard dell’Europa centrale)
  ejs.views_include = function(locals) {
      
      return function(path, d) {
@@ -50,14 +50,14 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<!-- include html for range price filter -->\n<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <span class=\"range-slider__value\">0</span>\n</div>"
+  , __lines = "<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n</div>"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<!-- include html for range price filter -->\n<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <span class=\"range-slider__value\">0</span>\n</div>")
-    ; __line = 5
+    ; __append("<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n</div>")
+    ; __line = 3
   }
   return __output;
 } catch (e) {
@@ -258,14 +258,14 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<!-- include html for range price filter -->\n<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <span class=\"range-slider__value\">0</span>\n</div>"
+  , __lines = "<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n</div>"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<!-- include html for range price filter -->\n<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <span class=\"range-slider__value\">0</span>\n</div>")
-    ; __line = 5
+    ; __append("<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n</div>")
+    ; __line = 3
   }
   return __output;
 } catch (e) {

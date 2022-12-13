@@ -8,6 +8,7 @@ function load_footer() {
 
 function init() {
     load_footer();
+    let filters = false;
 
     document.querySelector("form#search_form").addEventListener("submit", (event) => {
         event.preventDefault();
@@ -34,8 +35,18 @@ function init() {
 
     document.querySelector("#filters").addEventListener("click", (event) => {
         event.preventDefault();
-        let result_list = document.querySelector("#search_results_list");
-        result_list.innerHTML = "";
-        document.querySelector(".container").innerHTML += ejs.views_filters();
+
+        if (!filters){
+            let result_list = document.querySelector("#search_results_list");
+            result_list.innerHTML = "";
+            document.querySelector(".container").innerHTML += ejs.views_filters();
+            filters = true;
+        }
+        else{
+            document.querySelector(".container").removeChild(document.querySelector(".container").lastChild);
+            filters = false;
+        }
+
+       
     });
 } 
