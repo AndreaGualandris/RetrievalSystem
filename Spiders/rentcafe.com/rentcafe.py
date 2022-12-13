@@ -7,16 +7,6 @@ class RentCafeSpider(scrapy.Spider):
     # start_urls = ["https://www.rentcafe.com/apartments-for-rent/us/il/"]
     # start_urls = ["https://www.rentcafe.com/apartments-for-rent/us/in/"]
     start_urls = ["https://www.rentcafe.com/apartments-for-rent/us/mi/"]
-    # def start_requests(self):
-    #     urls = []
-    #     for i in range(1,28):
-    #         if i == 1:
-    #             urls.append("https://www.apartments.com/chicago-il/")
-    #         else:
-    #             urls.append("https://www.apartments.com/chicago-il/" + str(i))
-
-    #     for url in urls:
-    #         yield scrapy.Request(url=url, callback=self.parse)
    
     def parse(self, response):
         # get the price of the apartment
@@ -27,7 +17,23 @@ class RentCafeSpider(scrapy.Spider):
 
                 min_price = houseInfos.css('li.data-rent:nth-child(1)::text').get()
                 max_price = houseInfos.css('li.data-rent:nth-child(2)::text').get()
-                price = str(min_price) + " - " + str(max_price)
+                # filtering
+                if None == min_price:
+                    if None == max_price:
+                        price = 'Ask for pricing'
+                    else:
+                        price = str(max_price)
+                else:
+                    if None == max_price:
+                        price = str(min_price)
+                    else:
+                        price = str(min_price)
+                if "$" in price:
+                    price = price.replace("$", '')
+                if "+" in price:
+                    price = price.replace("+", '')
+                if "," in price:
+                    price = price.replace(",", '')
 
                 streetAddress = houseInfos.css(".listing-address.building-address span:nth-child(1)::text").get()
                 addressLocality = houseInfos.css(".listing-address.building-address span:nth-child(2)::text").get()
@@ -38,14 +44,32 @@ class RentCafeSpider(scrapy.Spider):
                 # get the number of bedrooms
                 min_bed = houseInfos.css(".listing-beds .data-beds:nth-child(2)::text").get()
                 max_bed = houseInfos.css(".listing-beds .data-beds:nth-child(3)::text").get()
-                beds = str(min_bed) + "-" + str(max_bed)
+                # filtering
+                if None == min_bed:
+                    if None == max_bed:
+                        beds = str(0)
+                    else:
+                        beds = str(max_bed)
+                else:
+                    if None == max_bed:
+                        beds = str(min_bed)
+                    else:
+                        beds = str(min_bed)
+                if "BEDS" in beds:
+                    beds = beds.replace("BEDS", '')
+                if "BED" in beds:
+                    beds = beds.replace("BED", '')
+                beds = beds.strip()
 
                 urlImage = response.css('.listing-presentation .listing-presentation-extra-photos.row.map-hide img::attr(data-src)').get()
 
                 if urlImage == None:
                     urlImage = response.css('.listing-presentation .lazy.lazyload.cursor-pointer::attr(data-src)').get()
+                
 
                 yield {
+                    "state": addressRegion,
+                    "city": addressLocality,
                     'title': houseInfos.css('.listing-name.building-name a::text').get(),
                     'address': address,
                     'price': price,
