@@ -1,4 +1,4 @@
-#scrape link https://www.apartmentfinder.com/Short-Term-Housing/Illinois/Chicago
+#scrape link https://www.apartmentfinder.com/Illinois/Chicago
 # list of apartaments layout-row layout-wrap
 
 
@@ -9,9 +9,9 @@ from scrapy.selector import Selector
 
 class SpiderApartamentFinder(scrapy.Spider):
     name = "ApartamentFinderSpider"
-    # start_urls = ["https://www.apartmentfinder.com/Short-Term-Housing/Illinois"]
-    # start_urls = ["https://www.apartmentfinder.com/Short-Term-Housing/Indina"]
-    start_urls = ["https://www.apartmentfinder.com/Short-Term-Housing/Michigan"]
+    start_urls = ["https://www.apartmentfinder.com/Illinois/"]
+    # start_urls = ["https://www.apartmentfinder.com/Indiana/"]
+    # start_urls = ["https://www.apartmentfinder.com/Michigan/"]
 
 
     i=1
@@ -32,6 +32,6 @@ class SpiderApartamentFinder(scrapy.Spider):
 
             
 
-        next_page = response.urljoin("https://www.apartmentfinder.com/Short-Term-Housing/Illinois/Chicago/Page" + str(self.i))
+        next_page = response.urljoin(self.start_urls[0] + "Page" + str(self.i))
         if next_page is not None and self.i<=20:
             yield response.follow(next_page, self.parse)
