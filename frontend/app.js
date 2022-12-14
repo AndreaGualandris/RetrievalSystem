@@ -27,7 +27,7 @@ app.get('/search', (req, res) => {
 
  axios({
   method: 'get',
-  url: `http://localhost:8983/solr/houses_collection/query?qf=title^3.0+beds^1.5+address^2.0+price^1.0&rows=50&indent=true&q.op=AND&q=*${query}*&defType=edismax`
+  url: `http://localhost:8983/solr/houses/query?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=AND&q=*${query}*&defType=edismax`
  }).then((response) => {
     console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)
@@ -42,7 +42,7 @@ app.get('/clustering', (req, res) => {
  axios({
   method: 'get',
   // url: `http://localhost:8983/solr/Houses_collection/select?q=${query}&facet=true&facet.field=${field}` 
-  url: `http://localhost:8983/solr/houses_collection/select?q=${query}&facet=true&facet.field=title` //cercare di aggiungere il copy field per il clustering altrimenti sticazzi proviamo come sotto
+  url: `http://localhost:8983/solr/houses/select?q=${query}&facet=true&facet.field=title` //cercare di aggiungere il copy field per il clustering altrimenti sticazzi proviamo come sotto
   // url: `http://localhost:8983/solr/houses_collection/select?q=*:*&facet=true&facet.field=beds&facet.field=price&facet.field=address&facet.field=title`  da testsare se funzionano cosi i facet.field
 
 
@@ -61,7 +61,7 @@ app.get('/similar', (req, res) =>{
 
   axios({
     method: 'get',
-    url: `http://localhost:8983/solr/houses_collection/query?q={!mlt qf=${qf} mintf=1 mindf=1}${id}`
+    url: `http://localhost:8983/solr/houses/query?q={!mlt qf=${qf} mintf=1 mindf=1}${id}`
   }).then((response) => {
     console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)

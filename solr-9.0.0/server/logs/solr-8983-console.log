@@ -1,10 +1,10 @@
-[0.005s][warning][pagesize] UseLargePages disabled, no large pages configured and available on the system.
+[0.002s][warning][pagesize] UseLargePages disabled, no large pages configured and available on the system.
 WARNING: A command line option has enabled the Security Manager
 WARNING: The Security Manager is deprecated and will be removed in a future release
-2022-12-05 13:09:26.571 INFO  (main) [] o.e.j.u.log Logging initialized @928ms to org.eclipse.jetty.util.log.Slf4jLog
-2022-12-05 13:09:26.768 INFO  (main) [] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17.0.5+8-Ubuntu-2ubuntu120.04
-2022-12-05 13:09:27.070 INFO  (main) [] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2022-12-05 13:09:27.082 INFO  (main) [] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.0.0
-2022-12-05 13:09:27.082 INFO  (main) [] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in standalone mode on port 8983
-2022-12-05 13:09:27.082 INFO  (main) [] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /home/andrea/Documenti/Usi/3 anno/1_semestre/Information_Retrieval/solr-9.0.0
-2022-12-05 13:09:27.082 INFO  (main) [] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2022-12-05T13:09:27.082824600Z
+2022-12-14 12:36:23.663 INFO  (main) [] o.e.j.u.log Logging initialized @951ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-12-14 12:36:23.863 INFO  (main) [] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17.0.5+8-Ubuntu-2ubuntu120.04
+2022-12-14 12:36:24.200 INFO  (main) [] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2022-12-14 12:36:24.212 INFO  (main) [] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.0.0
+2022-12-14 12:36:24.212 INFO  (main) [] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in standalone mode on port 8983
+2022-12-14 12:36:24.212 INFO  (main) [] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /home/andrea/Documenti/Usi/3 anno/1_semestre/Information_Retrieval/projectIR/RetrievalSystem/solr-9.0.0
+2022-12-14 12:36:24.212 INFO  (main) [] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2022-12-14T12:36:24.212951538Z
