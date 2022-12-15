@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Thu Dec 15 2022 19:28:56 GMT+0100 (Central European Standard Time)
+//EJS Compiled Views - This file was automatically generated on Thu Dec 15 2022 20:01:02 GMT+0100 (Central European Standard Time)
  ejs.views_include = function(locals) {
      
      return function(path, d) {
@@ -109,14 +109,14 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n</div>"
+  , __lines = "<div class=\"range-slider\">\n    <label for=\"range-slider__range\"> Price </label><br>\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <!-- filter house per price city beds state  -->\n</div>\n<form action=\"/city\">\n    <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n    <label for=\"vehicle1\"> city1</label><br>\n    <input type=\"checkbox\" id=\"vehicle2\" name=\"vehicle2\" value=\"Car\">\n    <label for=\"vehicle2\"> city2</label><br>\n    <input type=\"checkbox\" id=\"vehicle3\" name=\"vehicle3\" value=\"Boat\">\n    <label for=\"vehicle3\"> city3</label><br><br>\n    <!-- <input type=\"submit\" value=\"Submit\"> -->\n</form>\n<form action=\"/state\">\n    <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n    <label for=\"vehicle1\"> city1</label><br>\n    <input type=\"checkbox\" id=\"vehicle2\" name=\"vehicle2\" value=\"Car\">\n    <label for=\"vehicle2\"> city2</label><br>\n    <input type=\"checkbox\" id=\"vehicle3\" name=\"vehicle3\" value=\"Boat\">\n    <label for=\"vehicle3\"> city3</label><br><br>\n    <!-- <input type=\"submit\" value=\"Submit\"> -->\n</form>\n<input type=\"number\" name=\"quantity\" min=\"1\" max=\"5\">"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n</div>")
-    ; __line = 3
+    ; __append("<div class=\"range-slider\">\n    <label for=\"range-slider__range\"> Price </label><br>\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <!-- filter house per price city beds state  -->\n</div>\n<form action=\"/city\">\n    <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n    <label for=\"vehicle1\"> city1</label><br>\n    <input type=\"checkbox\" id=\"vehicle2\" name=\"vehicle2\" value=\"Car\">\n    <label for=\"vehicle2\"> city2</label><br>\n    <input type=\"checkbox\" id=\"vehicle3\" name=\"vehicle3\" value=\"Boat\">\n    <label for=\"vehicle3\"> city3</label><br><br>\n    <!-- <input type=\"submit\" value=\"Submit\"> -->\n</form>\n<form action=\"/state\">\n    <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n    <label for=\"vehicle1\"> city1</label><br>\n    <input type=\"checkbox\" id=\"vehicle2\" name=\"vehicle2\" value=\"Car\">\n    <label for=\"vehicle2\"> city2</label><br>\n    <input type=\"checkbox\" id=\"vehicle3\" name=\"vehicle3\" value=\"Boat\">\n    <label for=\"vehicle3\"> city3</label><br><br>\n    <!-- <input type=\"submit\" value=\"Submit\"> -->\n</form>\n<input type=\"number\" name=\"quantity\" min=\"1\" max=\"5\">")
+    ; __line = 24
   }
   return __output;
 } catch (e) {
@@ -226,7 +226,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.id %>\" data-id=\"<%= result.id %>\" class=\"search_result_grid\" >\n        <a class=\"search_result_image\" onclick=\"href = '<%= result.urlHouse %>'\" target=\"_blank\">\n            <img src=\"<%= result.urlImage %>\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <div class=\"title_container\"><span><%= result.title %></span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\"><%= result.address %></span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Bed:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> <%= result.city %></span></p>\n                <p><span><%= result.state %></span></p>\n                <p><span> <%= result.price %></span></p>\n                <p><span> <%= result.beds %></span></p>\n            </section>\n\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n<% }); %> \n\n"
+  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.id %>\" data-id=\"<%= result.id %>\" class=\"search_result_grid\" >\n        <a class=\"search_result_image\" onclick=\"href = '<%= result.urlHouse %>'\" target=\"_blank\">\n            <img src=\"<%= result.urlImage %>\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <div class=\"title_container\"><span><%= result.title %></span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\"><%= result.address %></span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Beds:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> <%= result.city %></span></p>\n                <p><span><%= result.state %></span></p>\n                <p><span> <%= result.price %></span></p>\n                <p><span> <%= result.beds %></span></p>\n            </section>\n\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n<% }); %> \n\n"
   , __filename = undefined;
 try {
   var __output = "";
@@ -252,7 +252,7 @@ try {
     ; __append("</span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\">")
     ; __line = 10
     ; __append(escapeFn( result.address ))
-    ; __append("</span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Bed:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> ")
+    ; __append("</span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Beds:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> ")
     ; __line = 23
     ; __append(escapeFn( result.city ))
     ; __append("</span></p>\n                <p><span>")
@@ -476,14 +476,14 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n</div>"
+  , __lines = "<div class=\"range-slider\">\n    <label for=\"range-slider__range\"> Price </label><br>\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <!-- filter house per price city beds state  -->\n</div>\n<form action=\"/city\">\n    <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n    <label for=\"vehicle1\"> city1</label><br>\n    <input type=\"checkbox\" id=\"vehicle2\" name=\"vehicle2\" value=\"Car\">\n    <label for=\"vehicle2\"> city2</label><br>\n    <input type=\"checkbox\" id=\"vehicle3\" name=\"vehicle3\" value=\"Boat\">\n    <label for=\"vehicle3\"> city3</label><br><br>\n    <!-- <input type=\"submit\" value=\"Submit\"> -->\n</form>\n<form action=\"/state\">\n    <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n    <label for=\"vehicle1\"> city1</label><br>\n    <input type=\"checkbox\" id=\"vehicle2\" name=\"vehicle2\" value=\"Car\">\n    <label for=\"vehicle2\"> city2</label><br>\n    <input type=\"checkbox\" id=\"vehicle3\" name=\"vehicle3\" value=\"Boat\">\n    <label for=\"vehicle3\"> city3</label><br><br>\n    <!-- <input type=\"submit\" value=\"Submit\"> -->\n</form>\n<input type=\"number\" name=\"quantity\" min=\"1\" max=\"5\">"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<div class=\"range-slider\">\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n</div>")
-    ; __line = 3
+    ; __append("<div class=\"range-slider\">\n    <label for=\"range-slider__range\"> Price </label><br>\n    <input type=\"range\" class=\"range-slider__range\" value=\"0\" min=\"0\" max=\"100\">\n    <!-- filter house per price city beds state  -->\n</div>\n<form action=\"/city\">\n    <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n    <label for=\"vehicle1\"> city1</label><br>\n    <input type=\"checkbox\" id=\"vehicle2\" name=\"vehicle2\" value=\"Car\">\n    <label for=\"vehicle2\"> city2</label><br>\n    <input type=\"checkbox\" id=\"vehicle3\" name=\"vehicle3\" value=\"Boat\">\n    <label for=\"vehicle3\"> city3</label><br><br>\n    <!-- <input type=\"submit\" value=\"Submit\"> -->\n</form>\n<form action=\"/state\">\n    <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n    <label for=\"vehicle1\"> city1</label><br>\n    <input type=\"checkbox\" id=\"vehicle2\" name=\"vehicle2\" value=\"Car\">\n    <label for=\"vehicle2\"> city2</label><br>\n    <input type=\"checkbox\" id=\"vehicle3\" name=\"vehicle3\" value=\"Boat\">\n    <label for=\"vehicle3\"> city3</label><br><br>\n    <!-- <input type=\"submit\" value=\"Submit\"> -->\n</form>\n<input type=\"number\" name=\"quantity\" min=\"1\" max=\"5\">")
+    ; __line = 24
   }
   return __output;
 } catch (e) {
@@ -593,7 +593,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.id %>\" data-id=\"<%= result.id %>\" class=\"search_result_grid\" >\n        <a class=\"search_result_image\" onclick=\"href = '<%= result.urlHouse %>'\" target=\"_blank\">\n            <img src=\"<%= result.urlImage %>\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <div class=\"title_container\"><span><%= result.title %></span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\"><%= result.address %></span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Bed:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> <%= result.city %></span></p>\n                <p><span><%= result.state %></span></p>\n                <p><span> <%= result.price %></span></p>\n                <p><span> <%= result.beds %></span></p>\n            </section>\n\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n<% }); %> \n\n"
+  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.id %>\" data-id=\"<%= result.id %>\" class=\"search_result_grid\" >\n        <a class=\"search_result_image\" onclick=\"href = '<%= result.urlHouse %>'\" target=\"_blank\">\n            <img src=\"<%= result.urlImage %>\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <div class=\"title_container\"><span><%= result.title %></span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\"><%= result.address %></span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Beds:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> <%= result.city %></span></p>\n                <p><span><%= result.state %></span></p>\n                <p><span> <%= result.price %></span></p>\n                <p><span> <%= result.beds %></span></p>\n            </section>\n\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n<% }); %> \n\n"
   , __filename = undefined;
 try {
   var __output = "";
@@ -619,7 +619,7 @@ try {
     ; __append("</span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\">")
     ; __line = 10
     ; __append(escapeFn( result.address ))
-    ; __append("</span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Bed:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> ")
+    ; __append("</span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Beds:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> ")
     ; __line = 23
     ; __append(escapeFn( result.city ))
     ; __append("</span></p>\n                <p><span>")

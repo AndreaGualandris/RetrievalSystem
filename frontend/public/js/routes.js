@@ -40,6 +40,9 @@ function similar_listener(){
 
 
 function init() {
+    // debug
+    document.querySelector("#filters_bar").innerHTML += ejs.views_filters();
+
     load_footer();
     let filters = false;
     let clustering = false;
@@ -83,16 +86,14 @@ function init() {
     document.querySelector("#filters").addEventListener("click", (event) => {
         event.preventDefault();
 
-        if (!filters) {
-            let result_list = document.querySelector("#search_results_list");
-            result_list.innerHTML = "";
-            document.querySelector(".container").innerHTML += ejs.views_filters();
-            filters = true;
-        }
-        else {
-            document.querySelector(".container").removeChild(document.querySelector(".range-slider"));
-            filters = false;
-        }
+        // if (!filters) {
+            //     filters = true;
+            // document.querySelector("#filters_bar").innerHTML += ejs.views_filters();
+        // }
+        // else {
+        //     document.querySelector("#filters_bar").removeChild(document.querySelector(".range-slider"));
+        //     filters = false;
+        // }
 
 
     });

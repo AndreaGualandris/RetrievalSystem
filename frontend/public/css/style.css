@@ -3,7 +3,7 @@
 body {
     display: grid;
     grid-template-columns: 0.1fr 1fr 0.1fr;
-    grid-template-rows: 150px 80px 100px 4fr 80px;
+    grid-template-rows: 150px 80px 200px 4fr 80px;
     grid-template-areas:
         "title_img title ."
         ". titlebar ."
@@ -70,9 +70,21 @@ body>img.home_img {
 h2 {
     grid-area: titlebar;
 }
-
-#search_form {
+#inputs_bar {
     grid-area: bar;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#filters_bar {
+    grid-area: bar;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+#search_form {
     display: flex;
     padding: 0.5em;
     flex-direction: row;
@@ -494,7 +506,7 @@ a {
     padding: 50px;
     padding-top: 125px;
 
-    background: #ffffff;
+    background: transparent;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
