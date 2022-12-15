@@ -41,9 +41,7 @@ app.get('/clustering', (req, res) => {
 
  axios({
   method: 'get',
-  // url: `http://localhost:8983/solr/Houses_collection/select?q=${query}&facet=true&facet.field=${field}` 
   url: `http://localhost:8983/solr/houses/select?q=${query}&facet=true&facet.field=title` //cercare di aggiungere il copy field per il clustering altrimenti sticazzi proviamo come sotto
-  // url: `http://localhost:8983/solr/houses_collection/select?q=*:*&facet=true&facet.field=beds&facet.field=price&facet.field=address&facet.field=title`  da testsare se funzionano cosi i facet.field
 
 
  }).then((response) => {
@@ -56,12 +54,12 @@ app.get('/clustering', (req, res) => {
 app.get('/similar', (req, res) =>{
 
   const query = req.query.query;
-  const qf = "beds + city + state + price" //campi sul quale voglio che siano simili 
+  const qf = "city+state+price+beds" //campi sul quale voglio che siano simili 
   const id = req.query.id; //id del documento che voglio filtrare
-
+const fl = "city+state+price+beds"
   axios({
     method: 'get',
-    url: `http://localhost:8983/solr/houses/query?q={!mlt qf=${qf} mintf=1 mindf=1}${id}`
+    url: `http://localhost:8983/solr/houses/query?q={!mlt qf=${qf} fl=${fl} mintf=1 mindf=1}${id}`
   }).then((response) => {
     // console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)

@@ -1,4 +1,4 @@
-
+let grid = true;
 
 function load_footer() {
     let foot = ejs.views_includes_footer();
@@ -14,13 +14,23 @@ function similar_listener(){
             // console.log("button cliccato")
             let a = document.querySelector("span.similar_butt").parentNode;
             let a_id = a.getAttribute("data-id");
+            console.log("a_id", a_id);
 
             fetch(`/similar?query=${query}&id=${a_id}`).then((response) => {
                 return response.json();
             }).then((response) => {
+
                 console.log("response", response);
-                result_list.innerHTML = "";
-                result_list.innerHTML += ejs.views_search_result({ "query_results": response });
+                if (grid) {
+                    result_list.innerHTML = "";
+                    let result_list_grid = document.createElement("section");
+                    result_list_grid.setAttribute("id", "search_results_list_grid");
+                    result_list.appendChild(result_list_grid);
+                    result_list_grid.innerHTML += ejs.views_search_result_grid({ "query_results": response });
+                } else {
+                    result_list.innerHTML = "";
+                    result_list.innerHTML += ejs.views_search_result({ "query_results": response });
+                }
 
                 similar_listener();
             })
@@ -33,8 +43,6 @@ function init() {
     load_footer();
     let filters = false;
     let clustering = false;
-
-    let grid = true;
 
     document.querySelector("form#search_form").addEventListener("submit", (event) => {
         event.preventDefault();
@@ -50,12 +58,14 @@ function init() {
         }).then((response) => {
             // console.log("response", response);
             if (grid) {
+                result_list.innerHTML = "";
                 let result_list_grid = document.createElement("section");
                 result_list_grid.setAttribute("id", "search_results_list_grid");
                 result_list.appendChild(result_list_grid);
                 result_list_grid.innerHTML += ejs.views_search_result_grid({ "query_results": response });
             } else {
-                result_list.innerHTML += ejs.views_search_result({ "query_results": response });
+                result_list.innerHTML = "";
+                result_list.innerHTML = ejs.views_search_result({ "query_results": response });
             }
             similar_listener();
 
