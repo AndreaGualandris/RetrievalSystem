@@ -1,0 +1,22 @@
+
+<% query_results.forEach((result) => { %>
+    <section id="<%= result.id %>" data-id="<%= result.id %>" class="search_result_grid" >
+        <a class="search_result_image" onclick="href = '<%= result.urlHouse %>'" target="_blank">
+            <img src="<%= result.urlImage %>" alt="image">
+        </a>
+
+        <section class="search_result_title">
+            <h4><span><%= result.title %></span></h4>
+        </section>
+
+        <section class="main_info">
+            <p id="search_result_state"><span>City: <%= result.city %></span></p>
+            <p id="search_result_city"><span>State: <%= result.state %></span></p>
+            <p><span>Price: <%= result.price %></span></p>
+        </section>
+
+        <span class="similar_butt"><a href="#"></a></span>
+
+        </section>
+<% }); %> 
+

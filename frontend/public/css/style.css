@@ -2,8 +2,8 @@
 
 body {
     display: grid;
-    grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-rows: 200px 80px 100px 4fr 80px;
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+    grid-template-rows: 150px 80px 100px 4fr 80px;
     grid-template-areas:
         "title_img title ."
         ". titlebar ."
@@ -26,10 +26,10 @@ body {
     flex-direction: column;
 }
 
-.container {
+/* .container {
     width: 100%;
     text-align: center;
-}
+} */
 
 .searchBar {
     width: 50%;
@@ -75,8 +75,10 @@ h2 {
     grid-area: bar;
     display: flex;
     padding: 0.5em;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    width: 100%;
+    justify-content: center;
 }
 
 
@@ -143,6 +145,13 @@ main.home_page {
     align-items: center;
     flex-direction: column;
 }
+#search_results_list_grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
 .search_result {
     display: grid;
@@ -167,12 +176,102 @@ main.home_page {
     background-color: #e5e5e5;
     padding: 2%;
 }
-
-.main_info {
+/* grid css  */
+.search_result_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 0.4fr 0.5fr 0.3fr;
+    grid-template-areas:
+        "image"
+        "title"
+        "info"
+        "button";
+    /* width: 100%;
+    height: 100%;
+    margin: 0;
+    min-width: 1vw;
+    min-height: 1vh;
+    /* border: 1px solid rgb(255, 0, 0); */
+    height: 680px;
+    max-width: 400px;
+    max-height: 680px;
+    border-radius: 12px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    background-color: #e5e5e5;
+    padding: 2%;
+}
+.search_result_grid .search_result_image {
+    grid-area: image;
+}
+.search_result_grid .search_result_image img {
+    width: 25em;
+    height: 18em;
+}
+.search_result_grid .search_result_title {
+    grid-area: title;
+}
+.search_result_grid .main_info {
     grid-area: info;
+}
+/* .search_result_grid .similar_butt {
+    grid-area: button;
+    display: flex;
+} */
+.search_result_grid .similar_butt {
+    grid-area: button;
+
+
+    /* position: relative; */
+    display: inline-flex;
+    /* align-items: center; */
+    justify-content: flex-start;
+    width: 400px;
+    height: 55px;
+    /* margin: 0 15px; */
+    perspective: 1000px;
+}
+    .search_result_grid .similar_butt a{
+    font-size: 19px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+
+}
+.search_result_grid .similar_butt a:before,
+.search_result_grid .similar_butt a:after{
+    position: absolute;
+    content: "Similar Houses";
+    height: 55px;
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 5px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.search_result_grid .similar_butt a:before{
+    color: #fff;
+    background: #000;
+    transform: rotateY(0deg) translateZ(25px);
+}
+.search_result_grid .similar_butt a:after{
+    color: #000;
+    transform: rotateX(90deg) translateZ(25px);
+}
+.search_result_grid .similar_butt a:hover{
+    transform: translateZ(-25px) rotateX(-90deg);
+}
+
+/*  */
+
+.search_result .main_info {
+    grid-area: info;
+    display: flex;
+    align-items: center;
     flex-direction: row;
     justify-content: space-around
 }
@@ -189,11 +288,11 @@ main.home_page {
     /* align-items: center;
     justify-content: center; */
 }
-a.search_result_image {
+.search_result a.search_result_image {
     grid-area: image;
 
 }
-.search_result_image img {
+.search_result .search_result_image img {
     width: 100%;
     height: 100%;
     max-height: 30em;
@@ -207,7 +306,7 @@ a.search_result_image {
     transition-duration: 600ms;
 }
 
-.search_result_image:hover {
+.search_result .search_result_image:hover {
     transform: scale(1.05);
     transition-duration: 1500ms;
     /* opacity: 0.7; */
@@ -226,6 +325,8 @@ a.search_result_image {
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    /* max-width: 90%;
+    text-align: center; */
 }
 
 .values {
@@ -241,6 +342,8 @@ a.search_result_image {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 90%;
+    text-align: center;
 }
 
 footer.site_footer {
@@ -367,7 +470,7 @@ a {
 
 /* -------------------- END HAMBURGER MENU -------------------- */
 
-.similar_butt {
+.search_result .similar_butt {
     grid-area: button;
 
 
@@ -379,7 +482,7 @@ a {
     margin: 0 15px;
     perspective: 1000px;
   }
-  .similar_butt a{
+  .search_result .similar_butt a{
     font-size: 19px;
     letter-spacing: 1px;
     transform-style: preserve-3d;
@@ -388,8 +491,8 @@ a {
     font-family: 'Montserrat', sans-serif;
     
   }
-  .similar_butt a:before,
-  .similar_butt a:after{
+  .search_result .similar_butt a:before,
+  .search_result .similar_butt a:after{
     position: absolute;
     content: "Similar Houses";
     height: 55px;
@@ -401,15 +504,15 @@ a {
     box-sizing: border-box;
     border-radius: 5px;
   }
-  .similar_butt a:before{
+  .search_result .similar_butt a:before{
     color: #fff;
     background: #000;
     transform: rotateY(0deg) translateZ(25px);
   }
-  .similar_butt a:after{
+  .search_result .similar_butt a:after{
     color: #000;
     transform: rotateX(90deg) translateZ(25px);
   }
-  .similar_butt a:hover{
+  .search_result .similar_butt a:hover{
     transform: translateZ(-25px) rotateX(-90deg);
   }

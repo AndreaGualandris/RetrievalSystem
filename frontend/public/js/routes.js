@@ -34,6 +34,8 @@ function init() {
     let filters = false;
     let clustering = false;
 
+    let grid = true;
+
     document.querySelector("form#search_form").addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -47,9 +49,14 @@ function init() {
             return response.json();
         }).then((response) => {
             // console.log("response", response);
-
-            result_list.innerHTML += ejs.views_search_result({ "query_results": response });
-
+            if (grid) {
+                let result_list_grid = document.createElement("section");
+                result_list_grid.setAttribute("id", "search_results_list_grid");
+                result_list.appendChild(result_list_grid);
+                result_list_grid.innerHTML += ejs.views_search_result_grid({ "query_results": response });
+            } else {
+                result_list.innerHTML += ejs.views_search_result({ "query_results": response });
+            }
             similar_listener();
 
         });
@@ -59,6 +66,7 @@ function init() {
         event.preventDefault();
         let result_list = document.querySelector("#search_results_list");
         result_list.innerHTML = "";
+        document.querySelector("#search_results_list").appendChild(document.createElement("h5")).innerHTML = 'No more homelessness'
         document.querySelector("#search_results h3").innerHTML = '';
     });
 
