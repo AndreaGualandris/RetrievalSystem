@@ -8,18 +8,18 @@ function load_footer() {
 function similar_listener(){
     let query = document.querySelector("input#search").value;
     let result_list = document.querySelector("#search_results_list");
-    document.querySelectorAll("button.similar").forEach((button) => {
+    document.querySelectorAll("span.similar_butt").forEach((button) => {
         button.addEventListener("click", (event) => {
             event.preventDefault();
-            console.log("button cliccato")
-            let a = document.querySelector("button.similar").parentNode;
+            // console.log("button cliccato")
+            let a = document.querySelector("span.similar_butt").parentNode;
             let a_id = a.getAttribute("data-id");
 
             fetch(`/similar?query=${query}&id=${a_id}`).then((response) => {
                 return response.json();
             }).then((response) => {
                 console.log("response", response);
-                result_list.innerHTML += "";
+                result_list.innerHTML = "";
                 result_list.innerHTML += ejs.views_search_result({ "query_results": response });
 
                 similar_listener();
@@ -46,7 +46,7 @@ function init() {
         fetch(`/search?query=${query}`).then((response) => {
             return response.json();
         }).then((response) => {
-            console.log("response", response);
+            // console.log("response", response);
 
             result_list.innerHTML += ejs.views_search_result({ "query_results": response });
 

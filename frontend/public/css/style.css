@@ -146,10 +146,11 @@ main.home_page {
 
 .search_result {
     display: grid;
-    grid-template-columns: 1fr 0.2fr 0.8fr;
-    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.3fr;
+    grid-template-columns: 1fr 0.1fr 0.8fr;
+    grid-template-rows: 0.5fr 0.4fr 0.5fr 0.5fr 0.5fr 0.3fr;
     grid-template-areas:
         "image title title"
+        "image info info"
         "image label value"
         "image label value"
         "image label value"
@@ -167,11 +168,36 @@ main.home_page {
     padding: 2%;
 }
 
-.search_result_image {
+.main_info {
+    grid-area: info;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around
+}
+
+#search_result_city {
+    font-size: 1.3em;
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+}
+#search_result_state {
+    font-size: 1.3em;
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+}
+a.search_result_image {
     grid-area: image;
+
+}
+.search_result_image img {
     width: 100%;
     height: 100%;
-    max-height: 25em;
+    max-height: 30em;
+    max-width: 40em;
     border-radius: 12px 12px 12px 12px;
 }
 
@@ -181,7 +207,7 @@ main.home_page {
     transition-duration: 600ms;
 }
 
-.search_result:hover .search_result_image {
+.search_result_image:hover {
     transform: scale(1.05);
     transition-duration: 1500ms;
     /* opacity: 0.7; */
@@ -215,12 +241,6 @@ main.home_page {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-button.similar {
-    grid-area: button;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
 footer.site_footer {
@@ -347,10 +367,13 @@ a {
 
 /* -------------------- END HAMBURGER MENU -------------------- */
 
+.similar_butt {
+    grid-area: button;
 
-.similar_butt{
+
     position: relative;
     display: inline-flex;
+    justify-content: center;
     width: 180px;
     height: 55px;
     margin: 0 15px;

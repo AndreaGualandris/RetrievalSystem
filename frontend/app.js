@@ -29,7 +29,7 @@ app.get('/search', (req, res) => {
   method: 'get',
   url: `http://localhost:8983/solr/houses/query?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=AND&q=*${query}*&defType=edismax`
  }).then((response) => {
-    console.log(response.data.response.docs);
+    // console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)
  })
 });
@@ -47,7 +47,7 @@ app.get('/clustering', (req, res) => {
 
 
  }).then((response) => {
-    console.log(response.data.response.docs);
+    // console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)
  })
 });
@@ -63,7 +63,7 @@ app.get('/similar', (req, res) =>{
     method: 'get',
     url: `http://localhost:8983/solr/houses/query?q={!mlt qf=${qf} mintf=1 mindf=1}${id}`
   }).then((response) => {
-    console.log(response.data.response.docs);
+    // console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)
 })
 });
