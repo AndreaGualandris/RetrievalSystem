@@ -6,13 +6,26 @@
         </a>
 
         <section class="search_result_title">
-            <h4><span><%= result.title %></span></h4>
+            <div class="title_container"><span><%= result.title %></span></div>
+            <div class="address_container"><span class="search_result_address"><%= result.address %></span></div>
         </section>
 
+        
+
         <section class="main_info">
-            <p id="search_result_state"><span>City: <%= result.city %></span></p>
-            <p id="search_result_city"><span>State: <%= result.state %></span></p>
-            <p><span>Price: <%= result.price %></span></p>
+            <section class="label">
+                <p><span>City:</span></p> 
+                <p><span>State:</span></p> 
+                <p><span>Price:</span></p> 
+                <p><span>Bed:</span></p> 
+            </section>
+            <section class="values">
+                <p><span> <%= result.city %></span></p>
+                <p><span><%= result.state %></span></p>
+                <p><span> <%= result.price %></span></p>
+                <p><span> <%= result.beds %></span></p>
+            </section>
+
         </section>
 
         <span class="similar_butt"><a href="#"></a></span>

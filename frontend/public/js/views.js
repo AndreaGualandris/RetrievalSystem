@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Thu Dec 15 2022 16:11:07 GMT+0100 (Central European Standard Time)
+//EJS Compiled Views - This file was automatically generated on Thu Dec 15 2022 17:33:44 GMT+0100 (Central European Standard Time)
  ejs.views_include = function(locals) {
      
      return function(path, d) {
@@ -226,7 +226,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.id %>\" data-id=\"<%= result.id %>\" class=\"search_result_grid\" >\n        <a class=\"search_result_image\" onclick=\"href = '<%= result.urlHouse %>'\" target=\"_blank\">\n            <img src=\"<%= result.urlImage %>\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <h4><span><%= result.title %></span></h4>\n        </section>\n\n        <section class=\"main_info\">\n            <p id=\"search_result_state\"><span>City: <%= result.city %></span></p>\n            <p id=\"search_result_city\"><span>State: <%= result.state %></span></p>\n            <p><span>Price: <%= result.price %></span></p>\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n<% }); %> \n\n"
+  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.id %>\" data-id=\"<%= result.id %>\" class=\"search_result_grid\" >\n        <a class=\"search_result_image\" onclick=\"href = '<%= result.urlHouse %>'\" target=\"_blank\">\n            <img src=\"<%= result.urlImage %>\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <div class=\"title_container\"><span><%= result.title %></span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\"><%= result.address %></span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Bed:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> <%= result.city %></span></p>\n                <p><span><%= result.state %></span></p>\n                <p><span> <%= result.price %></span></p>\n                <p><span> <%= result.beds %></span></p>\n            </section>\n\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n<% }); %> \n\n"
   , __filename = undefined;
 try {
   var __output = "";
@@ -246,23 +246,29 @@ try {
     ; __append("'\" target=\"_blank\">\n            <img src=\"")
     ; __line = 5
     ; __append(escapeFn( result.urlImage ))
-    ; __append("\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <h4><span>")
+    ; __append("\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <div class=\"title_container\"><span>")
     ; __line = 9
     ; __append(escapeFn( result.title ))
-    ; __append("</span></h4>\n        </section>\n\n        <section class=\"main_info\">\n            <p id=\"search_result_state\"><span>City: ")
-    ; __line = 13
+    ; __append("</span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\">")
+    ; __line = 10
+    ; __append(escapeFn( result.address ))
+    ; __append("</span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Bed:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> ")
+    ; __line = 23
     ; __append(escapeFn( result.city ))
-    ; __append("</span></p>\n            <p id=\"search_result_city\"><span>State: ")
-    ; __line = 14
+    ; __append("</span></p>\n                <p><span>")
+    ; __line = 24
     ; __append(escapeFn( result.state ))
-    ; __append("</span></p>\n            <p><span>Price: ")
-    ; __line = 15
+    ; __append("</span></p>\n                <p><span> ")
+    ; __line = 25
     ; __append(escapeFn( result.price ))
-    ; __append("</span></p>\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n")
-    ; __line = 21
+    ; __append("</span></p>\n                <p><span> ")
+    ; __line = 26
+    ; __append(escapeFn( result.beds ))
+    ; __append("</span></p>\n            </section>\n\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n")
+    ; __line = 34
     ;  }); 
     ; __append(" \n\n")
-    ; __line = 23
+    ; __line = 36
   }
   return __output;
 } catch (e) {
@@ -587,7 +593,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.id %>\" data-id=\"<%= result.id %>\" class=\"search_result_grid\" >\n        <a class=\"search_result_image\" onclick=\"href = '<%= result.urlHouse %>'\" target=\"_blank\">\n            <img src=\"<%= result.urlImage %>\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <h4><span><%= result.title %></span></h4>\n        </section>\n\n        <section class=\"main_info\">\n            <p id=\"search_result_state\"><span>City: <%= result.city %></span></p>\n            <p id=\"search_result_city\"><span>State: <%= result.state %></span></p>\n            <p><span>Price: <%= result.price %></span></p>\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n<% }); %> \n\n"
+  , __lines = "\n<% query_results.forEach((result) => { %>\n    <section id=\"<%= result.id %>\" data-id=\"<%= result.id %>\" class=\"search_result_grid\" >\n        <a class=\"search_result_image\" onclick=\"href = '<%= result.urlHouse %>'\" target=\"_blank\">\n            <img src=\"<%= result.urlImage %>\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <div class=\"title_container\"><span><%= result.title %></span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\"><%= result.address %></span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Bed:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> <%= result.city %></span></p>\n                <p><span><%= result.state %></span></p>\n                <p><span> <%= result.price %></span></p>\n                <p><span> <%= result.beds %></span></p>\n            </section>\n\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n<% }); %> \n\n"
   , __filename = undefined;
 try {
   var __output = "";
@@ -607,23 +613,29 @@ try {
     ; __append("'\" target=\"_blank\">\n            <img src=\"")
     ; __line = 5
     ; __append(escapeFn( result.urlImage ))
-    ; __append("\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <h4><span>")
+    ; __append("\" alt=\"image\">\n        </a>\n\n        <section class=\"search_result_title\">\n            <div class=\"title_container\"><span>")
     ; __line = 9
     ; __append(escapeFn( result.title ))
-    ; __append("</span></h4>\n        </section>\n\n        <section class=\"main_info\">\n            <p id=\"search_result_state\"><span>City: ")
-    ; __line = 13
+    ; __append("</span></div>\n            <div class=\"address_container\"><span class=\"search_result_address\">")
+    ; __line = 10
+    ; __append(escapeFn( result.address ))
+    ; __append("</span></div>\n        </section>\n\n        \n\n        <section class=\"main_info\">\n            <section class=\"label\">\n                <p><span>City:</span></p> \n                <p><span>State:</span></p> \n                <p><span>Price:</span></p> \n                <p><span>Bed:</span></p> \n            </section>\n            <section class=\"values\">\n                <p><span> ")
+    ; __line = 23
     ; __append(escapeFn( result.city ))
-    ; __append("</span></p>\n            <p id=\"search_result_city\"><span>State: ")
-    ; __line = 14
+    ; __append("</span></p>\n                <p><span>")
+    ; __line = 24
     ; __append(escapeFn( result.state ))
-    ; __append("</span></p>\n            <p><span>Price: ")
-    ; __line = 15
+    ; __append("</span></p>\n                <p><span> ")
+    ; __line = 25
     ; __append(escapeFn( result.price ))
-    ; __append("</span></p>\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n")
-    ; __line = 21
+    ; __append("</span></p>\n                <p><span> ")
+    ; __line = 26
+    ; __append(escapeFn( result.beds ))
+    ; __append("</span></p>\n            </section>\n\n        </section>\n\n        <span class=\"similar_butt\"><a href=\"#\"></a></span>\n\n        </section>\n")
+    ; __line = 34
     ;  }); 
     ; __append(" \n\n")
-    ; __line = 23
+    ; __line = 36
   }
   return __output;
 } catch (e) {
