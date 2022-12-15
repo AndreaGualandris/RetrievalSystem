@@ -3,13 +3,13 @@
 body {
     display: grid;
     grid-template-columns: 0.1fr 1fr 0.1fr;
-    grid-template-rows: 150px 80px 200px 4fr 80px;
+    grid-template-rows: 150px 80px 0.8fr 4fr 80px;
     grid-template-areas:
         "title_img title ."
         ". titlebar ."
         ". bar ."
         ". main ."
-        "footer footer footer";
+        ". footer .";
     width: 100%;
     height: 100%;
     margin: 0;
@@ -77,13 +77,70 @@ h2 {
     flex-direction: column;
     align-items: center;
 }
-#filters_bar {
-    grid-area: bar;
+/* #filters_bar {
+    width: 100%;
+    height: 100%;
+    padding: 0.5em;
     display: flex;
+    align-items: center;
     justify-content: center;
+} */
+#filter_form {
+    grid-area: bar;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 33% 33% 33%;
+    grid-template-areas:
+        "slider cities"
+        "checklist cities"
+        "quantity filter_button";
+    width: 60%;
+    height: 160px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 26px;
+    color: white;
+    padding: 0.5em;
+    margin: 0.5em;
+    font-size: 1.2em;
+}
+#filter_form .range-slider {
+    grid-area: slider;
+    display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
 }
+#filter_form #checklist {
+    grid-area: checklist;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#filter_form #quantity {
+    grid-area: quantity;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#filter_form #cities_select {
+    grid-area: cities;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#filter_form #filter_button {
+    grid-area: filter_button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    border-radius: 26px;
+    border-color: #ffffff;
+}
+
 #search_form {
     display: flex;
     padding: 0.5em;
@@ -142,7 +199,7 @@ h2 {
 
 main.home_page {
     grid-area: main;
-    margin-top: 25px;
+    /* margin-top: 25px; */
 }
 
 #search_results {

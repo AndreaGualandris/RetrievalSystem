@@ -1,24 +1,51 @@
-<div class="range-slider">
-    <label for="range-slider__range"> Price </label><br>
-    <input type="range" class="range-slider__range" value="0" min="0" max="100">
-    <!-- filter house per price city beds state  -->
-</div>
-<form action="/city">
-    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-    <label for="vehicle1"> city1</label><br>
-    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-    <label for="vehicle2"> city2</label><br>
-    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-    <label for="vehicle3"> city3</label><br><br>
-    <!-- <input type="submit" value="Submit"> -->
+
+<form id='filter_form' action="/filter">
+
+    <div class="range-slider">
+        <label for="range-slider__range"> Price </label><br>
+        <input id='range_price' type="number" name="range-slider__range" step="10" min="0" max="10000">
+        <!-- <input id='range_price' type="range" class="range-slider__range" step="100" value="0" min="0" max="10000" oninput="this.nextElementSibling.value = this.value"> -->
+        <!-- <output>0</output> -->
+    </div>
+
+    <section id='checklist'>
+        <div>
+            <input class="checkoption"  onclick="checkedOnClick(this);" type="checkbox" id="IL" name="IL" value="IL">
+            <label for="IL"> IL</label>
+        </div>
+
+        <div>
+            <input class="checkoption"  onclick="checkedOnClick(this);" type="checkbox" id="IN" name="IN" value="IN">
+            <label for="IN"> IN</label>
+        </div>
+
+        <div>
+            <input class="checkoption"  onclick="checkedOnClick(this);" type="checkbox" id="MI" name="MI" value="MI">
+            <label for="MI"> MI</label>
+        </div>
+        <!-- <input class="checkoption"  onclick="checkedOnClick(this);" type="submit" value="Submit"> -->
+        <!-- <input class="checkoption"  onclick="checkedOnClick(this);" type="checkbox" id="city1" name="city1" value="Bike">
+        <label for="city1"> city1</label><br>
+        <input class="checkoption"  onclick="checkedOnClick(this);" type="checkbox" id="city2" name="city2" value="Car">
+        <label for="city2"> city2</label><br>
+        <input class="checkoption"  onclick="checkedOnClick(this);" type="checkbox" id="city3" name="city3" value="Boat">
+        <label for="city3"> city3</label><br> -->
+        <!-- <input class="checkoption"  onclick="checkedOnClick(this);" type="submit" value="Submit"> -->
+    </section>
+    <section id="quantity">
+        <label for="quantity"> Beds</label><br>
+        <input id='beds_quantity' type="number" name="quantity" min="1" max="10">
+    </section>
+
+    <section id="cities_select">
+        <label for="cities">Choose city</label>
+        <select name="cities" id="cities">
+            <option value="Chicago">Chicago</option>
+            <option value="Willow Springs">Willow Springs</option>
+            <option value="Naperville">Naperville</option>
+            <option value="Lisle">Lisle</option>
+        </select>
+    </section>
+
+    <button id="filter_button" class="searchButt" data-action="search" type="submit">Filter</button>
 </form>
-<form action="/state">
-    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-    <label for="vehicle1"> city1</label><br>
-    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-    <label for="vehicle2"> city2</label><br>
-    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-    <label for="vehicle3"> city3</label><br><br>
-    <!-- <input type="submit" value="Submit"> -->
-</form>
-<input type="number" name="quantity" min="1" max="5">
