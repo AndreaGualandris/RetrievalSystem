@@ -1,4 +1,18 @@
 let grid = true;
+let filters_hub = false;
+let clustering = false;
+
+function put_change_display() {
+    let button = document.querySelector("#inputs_bar #change_display");
+    button.addEventListener("click", () => {
+        if (grid) {
+            button.innerHTML = "Results displayed as a Vector"
+        } else {
+            button.innerHTML = "Results displayed as a Grid"
+        }
+        grid = !grid;
+    })
+}
 
 function load_footer() {
     let foot = ejs.views_includes_footer();
@@ -12,7 +26,9 @@ function similar_listener() {
         button.addEventListener("click", (event) => {
             event.preventDefault();
             // console.log("button cliccato")
-            let a = document.querySelector("span.similar_butt").parentNode;
+            // document.querySelectorAll("span.similar_butt").forEach(a => {
+
+            let a = button.parentNode;
             let a_id = a.getAttribute("data-id");
             console.log("a_id", a_id);
 
@@ -34,16 +50,12 @@ function similar_listener() {
 
                 similar_listener();
             })
+            // })
         });
     });
 }
 
-
-function init() {
-    load_footer();
-    let filters = false;
-    let clustering = false;
-
+function put_listener_search() {
     document.querySelector("form#search_form").addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -71,6 +83,13 @@ function init() {
 
         });
     });
+}
+
+function init() {
+    load_footer();
+
+    put_listener_search();
+    put_change_display();
 
     document.querySelector("img.home_img").addEventListener("click", (event) => {
         event.preventDefault();
@@ -82,126 +101,88 @@ function init() {
 
     document.querySelector("#filters").addEventListener("click", (event) => {
         event.preventDefault();
-
-        if (!filters) {
-            filters = true;
-
+        if (!filters_hub) {
+            filters_hub = true;
+            
             fetch(`/cities`).then((response) => {
                 return response.json();
             }).then((response) => {
                 console.log("response", response);
-                document.querySelector("#inputs_bar").innerHTML += ejs.views_filters({ "cities": response });
 
-
-
+                document.querySelector("#inputs_bar").innerHTML += ejs.views_filters({ "f_city": response });
+                put_listener_search();
+                put_change_display();
+            
                 document.querySelector("form#filter_form").addEventListener("submit", (event) => {
                     event.preventDefault();
                     // extract the filters
-                    let filters = { // filters placeholder
-                        "price": {min: 0, max: 1000000},
-                        "state": "*:*",
-                        "city": "*:*",
-                        "beds": "*:*"
+                    let query = document.querySelector("input#search").value;
+                    let filters_data = { // filters placeholder
+                        "price": {min: "", max: ":"},
+                        "state": ":",
+                        "city": ":",
+                        "beds": ":",
+                        'query': query
                     };
                     let checkboxes = document.querySelectorAll("input.checkoption");
                     checkboxes.forEach((checkbox) => {
                         if (checkbox.checked) {
-                            filters.state = checkbox.value;
+                            filters_data.state = checkbox.value;
                         }
                     });
                     if (document.querySelector("input#range_price").value != "") {
                         let range = document.querySelector("input#range_price").value;
-                        filters.price.max = range;
+                        filters_data.price.max = range;
                     }
-
+                    
                     if (document.querySelector("input#beds_quantity").value != "") {
                         let beds = document.querySelector("input#beds_quantity").value;
-                        filters.beds = beds;
+                        filters_data.beds = beds;
                     }
-
-
+                    
+                    
                     let cities = document.querySelectorAll("#cities option");
                     cities.forEach((city) => {
                         if (city.selected) {
-                            filters.city = city.value;
+                            filters_data.city = city.value;
                         }
                     });
-                    console.log("filters", filters); // vedi nella console di chrome i filtri selezionati (funzionano tutti)
-
-
+                    console.log("filters", filters_data); // vedi nella console di chrome i filtri selezionati (funzionano tutti)
+                    
                     fetch(`/filtering`, {
                         method: "post",
                         headers: {
                             'Content-Type': 'application/json'
-                          },
-                        body: JSON.stringify(filters)
+                        },
+                        body: JSON.stringify(filters_data)
                     }).then((response) => {
                         console.log("response", response);
-                            return response.json();
-                        }).then((response) => {
-                            console.log("response", response);
-                            let result_list = document.querySelector("#search_results_list");
+                        return response.json();
+                    }).then((response) => {
+                        console.log("response", response);
+                        let result_list = document.querySelector("#search_results_list");
+                        result_list.innerHTML = "";
+                        if (grid) {
                             result_list.innerHTML = "";
-                            if (grid) {
-                                result_list.innerHTML = "";
-                                let result_list_grid = document.createElement("section");
-                                result_list_grid.setAttribute("id", "search_results_list_grid");
-                                result_list.appendChild(result_list_grid);
-                                result_list_grid.innerHTML += ejs.views_search_result_grid({ "query_results": response });
-                            } else {
-                                result_list.innerHTML = "";
-                                result_list.innerHTML += ejs.views_search_result({ "query_results": response });
-                            }
-                            similar_listener();
-                        });
+                            let result_list_grid = document.createElement("section");
+                            result_list_grid.setAttribute("id", "search_results_list_grid");
+                            result_list.appendChild(result_list_grid);
+                            result_list_grid.innerHTML += ejs.views_search_result_grid({ "query_results": response });
+                        } else {
+                            result_list.innerHTML = "";
+                            result_list.innerHTML += ejs.views_search_result({ "query_results": response });
+                        }
+                        similar_listener();
+                        // put_listener_search();
+                        // put_change_display();
+                    });
+                    
 
-                    // send the filters to the server
-                    // DA QUI SUPER COPILOTATA NON SO SE FUNZIONA PROBABILMENTE NO, GUALA FAI LA MAGIA <3
-                    // fetch(`/filters`, {
-                    //     method: "POST",
-                    //     headers: {
-                    //         "Content-Type": "application/json"
-                    //     },
-                    //     body: JSON.stringify(filters)
-                    // }).then((response) => {
-                    //     return response.json();
-                    // }
-                    // ).then((response) => {
-                    //     console.log("response", response);
-                    //     let result_list = document.querySelector("#search_results_list");
-                    //     result_list.innerHTML = "";
-                    //     if (grid) {
-                    //         result_list.innerHTML = "";
-                    //         let result_list_grid = document.createElement("section");
-                    //         result_list_grid.setAttribute("id", "search_results_list_grid");
-                    //         result_list.appendChild(result_list_grid);
-                    //         result_list_grid.innerHTML += ejs.views_search_result_grid({ "query_results": response });
-                    //     } else {
-                    //         result_list.innerHTML = "";
-                    //         result_list.innerHTML += ejs.views_search_result({ "query_results": response });
-                    //     }
-                    //     similar_listener();
-                    // }
-                    // );
                 });
             });
         } else {
             document.querySelector("#inputs_bar").removeChild(document.querySelector("form#filter_form"));
-            filters = false;
-        }
-    });
-
-
-    document.querySelector("#clustering").addEventListener("click", (event) => {
-        event.preventDefault();
-        if (!clustering) {
-            let result_list = document.querySelector("#search_results_list");
-            result_list.innerHTML = "";
-            document.querySelector(".container").innerHTML += ejs.views_clusters();
-            clustering = true;
-        } else {
-            document.querySelector(".container").removeChild(document.querySelector(".cluster"));
-            clustering = false;
+            filters_hub = false;
         }
     });
 }
@@ -209,11 +190,16 @@ function init() {
 // filters functions
 function checkedOnClick(el) {
 
-    // Select all checkboxes by class
-    let checkboxesList = document.querySelectorAll("input.checkoption");
-    checkboxesList.forEach((checkbox) => {
-        checkbox.checked = false; // Uncheck all checkboxes
-    });
+    if (!el.checked) {
+        el.checked = false;
+    } else {
+        // Select all checkboxes by class
+        let checkboxesList = document.querySelectorAll("input.checkoption");
+        checkboxesList.forEach((checkbox) => {
+            checkbox.checked = false; // Uncheck all checkboxes
+        });
+    
+        el.checked = true; // Checked clicked checkbox
+    }
 
-    el.checked = true; // Checked clicked checkbox
 }

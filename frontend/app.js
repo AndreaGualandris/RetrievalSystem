@@ -38,11 +38,10 @@ app.get('/search', (req, res) => {
 
 app.get('/clustering', (req, res) => {
   const query = req.query.query;
-  const field = req.query.field; //richiedre il campo da filtrare tramite menu a tendina
 
   axios({
     method: 'get',
-    url: `http://localhost:8983/solr/newHouses/select?q=${query}&facet=true&facet.field=title` //cercare di aggiungere il copy field per il clustering altrimenti sticazzi proviamo come sotto
+    url: `http://localhost:8983/solr/newHouses/select?q=${query}&`
 
 
   }).then((response) => {
@@ -55,15 +54,22 @@ app.get('/clustering', (req, res) => {
 app.get('/similar', (req, res) => {
 
   const query = req.query.query;
-  const qf = "city+state+price+beds" //campi sul quale voglio che siano simili 
+  const qf = "beds+address+price+state" //campi sul quale voglio che siano simili 
   const id = req.query.id; //id del documento che voglio filtrare
-  const fl = "city+state+price+beds"
+  const fl = "beds+address+price+state"
   axios({
     method: 'get',
-    url: `http://localhost:8983/solr/newHouses/query?q={!mlt qf=${qf} fl=${fl} mintf=1 mindf=1}${id}`
+    url: `http://localhost:8983/solr/newHouses/query?q={!mlt qf=${qf} fl=${fl} mintf=1 mindf=1}${id}&rows=20`
   }).then((response) => {
-    // console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)
+  }).catch((err) => {
+    console.log(err)
+    axios({
+      method: 'get',
+      url: `http://localhost:8983/solr/houses/query?q={!mlt qf=${qf} fl=${fl} mintf=1 mindf=1}${id}&rows=20`
+    }).then((response) => {
+      res.status(200).json(response.data.response.docs)
+    })
   })
 });
 
@@ -82,17 +88,51 @@ app.get('/cities', (req, res) => {
 app.post('/filtering', (req, res) => {
   // const query = req.query.query;
   const obj = req.body;
-  console.log(obj)
-  const query = ":*" //obj.query;
-  const filter = `fq=city:${obj.city}`//&fq=state:${obj.state}` //&fq=price:[${obj.price.min} TO ${obj.price.max}]&fq=beds:${obj.beds}
 
+  console.log(obj.city)
+
+  let filter_city, filter_state, filter_price, filter_beds = "";
+  let filter = "";
+
+  if (obj.city != ":") {
+    filter_city = `fq=city:${obj.city}&`
+    filter += filter_city;
+  }
+  if (obj.state != ":") {
+    filter_state = `fq=state:${obj.state}&`
+    filter += filter_state;
+  }
+  if (obj.price.max != ":") {
+    filter_price = `fq=price:[ 0 TO ${obj.price.max}]&`
+    filter += filter_price;
+  }
+  if (obj.beds != ":") {
+    filter_beds = `fq=beds:${obj.beds}&`
+    filter += filter_beds;
+  }
+
+  console.log(filter)
+  const query = "*:*" //obj.query;
+  if (obj.query != "") {
+    query = obj.query;
+  }
+  console.log("query " + query)
+  // const filter = `fq=city:${obj.city}&fq=state:${obj.state}` //&fq=price:[${obj.price.min} TO ${obj.price.max}]&fq=beds:${obj.beds}
+  const qf = "title^2.5+beds^2.0+address^1.5+price^1.0" // field qf su parser edismax
+  const defType = "edismax";
+  const mm = "2";
   axios({
     method: 'get',
-    url: `http://localhost:8983/solr/newHouses/query?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=OR&q=${query}&${filter}&defType=edismax`
+    url: `http://localhost:8983/solr/houses/select?qf=title&q=${query}&${filter}q.op=OR&rows=50&indent=true&defType=edismax`
+
+
   }).then((response) => {
-    console.log(response.data.response.docs);
+    console.log(response.data.response);
     res.status(200).json(response.data.response.docs)
   })
+    .catch((err) => {
+      console.log(err);
+    })
 
 });
 

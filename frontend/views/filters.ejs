@@ -3,7 +3,7 @@
 
     <div class="range-slider">
         <label for="range-slider__range"> Price </label><br>
-        <input id='range_price' type="number" name="range-slider__range" step="10" min="0" max="10000">
+        <input id='range_price' type="string" name="range-slider__range" step="10" min="0" max="10000" value=":">
         <!-- <input id='range_price' type="range" class="range-slider__range" step="100" value="0" min="0" max="10000" oninput="this.nextElementSibling.value = this.value"> -->
         <!-- <output>0</output> -->
     </div>
@@ -34,15 +34,16 @@
     </section>
     <section id="quantity">
         <label for="quantity"> Beds</label><br>
-        <input id='beds_quantity' type="number" name="quantity" min="1" max="10">
+        <input id='beds_quantity' type="string" name="quantity" min="1" max="10" value=":">
     </section>
 
     <section id="cities_select">
         <label for="cities">Choose city</label>
         <select name="cities" id="cities">
 
-            <% for (var i = 0; i < cities.length-1; i=i+2) { %>
-                <option value="<%= cities[i] %>"><%= cities[i] %> (<%= cities[i+1] %>)</option>
+            <option value=":" selected></option>
+            <% for (var i = 0; i < f_city.length-1; i=i+2) { %>
+                <option value="<%= f_city[i] %>"><%= f_city[i] %> (<%= f_city[i+1] %>)</option>
             <% } %>
 <!-- 
             <option value="Chicago">Chicago</option>

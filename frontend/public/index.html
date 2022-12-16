@@ -23,23 +23,13 @@
             <span></span>
             <span></span>
 
-            <!--
-              Too bad the menu has to be inside of the button
-              but hey, it's pure CSS magic.
-              -->
             <ul id="menu">
                 <a href="#" id="filters">
                     <li>Filters</li>
                 </a>
-                <a href="#" id="clustering">
-                    <li>Clustering</li>
-                </a>
                 <a href="#">
                     <li>About</li>
                 </a>
-                <!-- <a href="#"><li>Info</li></a> -->
-                <!-- <a href="#"><li>Contact</li></a> -->
-                <!-- <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a> -->
             </ul>
         </div>
     </nav>
@@ -54,12 +44,10 @@
     <h2 class="centered">Find a place to stay:</h2>
     <section id="inputs_bar">
         <form id="search_form" action="/search" method="get">
-            <!-- <div class="container"> -->
                 <input type="text" id="search" class="searchBar" name="query" placeholder="    Search by city or country"></input>
                 <button id="search_button" class="searchButt" data-action="search" type="submit">Search</button>
-            <!-- </div> -->
         </form>
-        <!-- <section id="filters_bar"></section> -->
+        <button id="change_display">Results displayed as a Grid</button>
     </section>
 
 

@@ -3,7 +3,7 @@
 body {
     display: grid;
     grid-template-columns: 0.1fr 1fr 0.1fr;
-    grid-template-rows: 150px 80px 0.8fr 4fr 80px;
+    grid-template-rows: 150px 80px 300px 10fr 80px;
     grid-template-areas:
         "title_img title ."
         ". titlebar ."
@@ -41,6 +41,7 @@ body {
     height: 30px;
 }
 
+#inputs_bar #change_display,
 .searchBar:focus,
 #search_form input,
 #search_form select,
@@ -150,7 +151,7 @@ h2 {
     justify-content: center;
 }
 
-
+#inputs_bar #change_display,
 #search_form input,
 #search_form select,
 #search_form button {

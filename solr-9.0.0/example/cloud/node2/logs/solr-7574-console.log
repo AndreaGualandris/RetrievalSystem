@@ -1,10 +1,10 @@
 [0.002s][warning][pagesize] UseLargePages disabled, no large pages configured and available on the system.
 WARNING: A command line option has enabled the Security Manager
 WARNING: The Security Manager is deprecated and will be removed in a future release
-2022-12-16 12:32:11.530 INFO  (main) [] o.e.j.u.log Logging initialized @1087ms to org.eclipse.jetty.util.log.Slf4jLog
-2022-12-16 12:32:11.745 INFO  (main) [] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17.0.5+8-Ubuntu-2ubuntu120.04
-2022-12-16 12:32:12.079 INFO  (main) [] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2022-12-16 12:32:12.091 INFO  (main) [] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.0.0
-2022-12-16 12:32:12.091 INFO  (main) [] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in cloud mode on port 7574
-2022-12-16 12:32:12.092 INFO  (main) [] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /home/andrea/Documenti/Usi/3 anno/1_semestre/Information_Retrieval/proj/RetrievalSystem/solr-9.0.0
-2022-12-16 12:32:12.092 INFO  (main) [] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2022-12-16T12:32:12.092248707Z
+2022-12-16 17:07:49.009 INFO  (main) [] o.e.j.u.log Logging initialized @1097ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-12-16 17:07:49.248 INFO  (main) [] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17.0.5+8-Ubuntu-2ubuntu120.04
+2022-12-16 17:07:49.578 INFO  (main) [] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2022-12-16 17:07:49.591 INFO  (main) [] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.0.0
+2022-12-16 17:07:49.592 INFO  (main) [] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in cloud mode on port 7574
+2022-12-16 17:07:49.592 INFO  (main) [] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /home/andrea/Documenti/Usi/3 anno/1_semestre/Information_Retrieval/proj/RetrievalSystem/solr-9.0.0
+2022-12-16 17:07:49.592 INFO  (main) [] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2022-12-16T17:07:49.592427287Z
