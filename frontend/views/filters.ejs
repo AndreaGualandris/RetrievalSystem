@@ -40,10 +40,15 @@
     <section id="cities_select">
         <label for="cities">Choose city</label>
         <select name="cities" id="cities">
+
+            <% for (var i = 0; i < cities.length-1; i=i+2) { %>
+                <option value="<%= cities[i] %>"><%= cities[i] %> (<%= cities[i+1] %>)</option>
+            <% } %>
+<!-- 
             <option value="Chicago">Chicago</option>
             <option value="Willow Springs">Willow Springs</option>
             <option value="Naperville">Naperville</option>
-            <option value="Lisle">Lisle</option>
+            <option value="Lisle">Lisle</option> -->
         </select>
     </section>
 

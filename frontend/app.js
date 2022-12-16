@@ -19,19 +19,20 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
 const ejsc = require('ejsc-views');
+const console = require('console');
 ejsc.compile();
 
 
 app.get('/search', (req, res) => {
   const query = req.query.query;
 
- axios({
-  method: 'get',
-  url: `http://localhost:8983/solr/houses/query?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=AND&q=*${query}*&defType=edismax`
- }).then((response) => {
+  axios({
+    method: 'get',
+    url: `http://localhost:8983/solr/newHouses/query?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=AND&q=*${query}*&defType=edismax`
+  }).then((response) => {
     // console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)
- })
+  })
 });
 
 
@@ -39,50 +40,60 @@ app.get('/clustering', (req, res) => {
   const query = req.query.query;
   const field = req.query.field; //richiedre il campo da filtrare tramite menu a tendina
 
- axios({
-  method: 'get',
-  url: `http://localhost:8983/solr/houses/select?q=${query}&facet=true&facet.field=title` //cercare di aggiungere il copy field per il clustering altrimenti sticazzi proviamo come sotto
+  axios({
+    method: 'get',
+    url: `http://localhost:8983/solr/newHouses/select?q=${query}&facet=true&facet.field=title` //cercare di aggiungere il copy field per il clustering altrimenti sticazzi proviamo come sotto
 
 
- }).then((response) => {
+  }).then((response) => {
     // console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)
- })
+  })
 });
 
 
-app.get('/similar', (req, res) =>{
+app.get('/similar', (req, res) => {
 
   const query = req.query.query;
   const qf = "city+state+price+beds" //campi sul quale voglio che siano simili 
   const id = req.query.id; //id del documento che voglio filtrare
-const fl = "city+state+price+beds"
+  const fl = "city+state+price+beds"
   axios({
     method: 'get',
-    url: `http://localhost:8983/solr/houses/query?q={!mlt qf=${qf} fl=${fl} mintf=1 mindf=1}${id}`
+    url: `http://localhost:8983/solr/newHouses/query?q={!mlt qf=${qf} fl=${fl} mintf=1 mindf=1}${id}`
   }).then((response) => {
     // console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)
-})
+  })
 });
 
 
-app.get('/filtering', (req, res) => {
-  const query = req.query.query;
-  var obj = req; //oggetto che mi devi mandare con la fetch
-  const filter = `fq=city:Chicago&fq=state:${obj.state}&fq=price:[${obj.price.min} TO ${obj.price.max}]&fq=beds:[${obj.beds.min} TO ${obj.beds.max}]`
+app.get('/cities', (req, res) => {
+  axios({
+    method: 'get',
+    url: `http://localhost:8983/solr/newHouses/select?q=*:*&facet=true&facet.field=city`
+  }).then((response) => {
+    console.log(response.data.facet_counts.facet_fields.city);
+    res.status(200).json(response.data.facet_counts.facet_fields.city)
+  })
+});
 
- axios({
-  method: 'get',
-  // url: `http://localhost:8983/solr/houses/query?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=AND&q=*${query}*&defType=edismax`
-  // url: `http://localhost:8983/solr/houses/clustering?q=*:*&rows=80`
-  // url: `http://localhost:8983/solr/houses/query?q=*:*&rows=80&fq=city:Chicago&fq=state:IL&fq=price:[100000 TO 200000]&fq=beds:[2 TO 3]`
-  url: `http://localhost:8983/solr/houses/select?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=AND&q=${query}&defType=edismax&fq=city:Chicago&fq=beds:2`
 
- }).then((response) => {
+app.post('/filtering', (req, res) => {
+  // const query = req.query.query;
+  const obj = req.body;
+  console.log(obj)
+  const query = ":*" //obj.query;
+  const filter = `fq=city:${obj.city}`//&fq=state:${obj.state}` //&fq=price:[${obj.price.min} TO ${obj.price.max}]&fq=beds:${obj.beds}
+
+  axios({
+    method: 'get',
+    url: `http://localhost:8983/solr/newHouses/query?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=OR&q=${query}&${filter}&defType=edismax`
+  }).then((response) => {
     console.log(response.data.response.docs);
     res.status(200).json(response.data.response.docs)
- })
+  })
+
 });
 
 
