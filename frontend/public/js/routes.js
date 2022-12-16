@@ -25,8 +25,6 @@ function similar_listener() {
     document.querySelectorAll("span.similar_butt").forEach((button) => {
         button.addEventListener("click", (event) => {
             event.preventDefault();
-            // console.log("button cliccato")
-            // document.querySelectorAll("span.similar_butt").forEach(a => {
 
             let a = button.parentNode;
             let a_id = a.getAttribute("data-id");
@@ -147,7 +145,7 @@ function init() {
                             filters_data.city = city.value;
                         }
                     });
-                    console.log("filters", filters_data); // vedi nella console di chrome i filtri selezionati (funzionano tutti)
+                    console.log("filters", filters_data); 
                     
                     fetch(`/filtering`, {
                         method: "post",
@@ -173,8 +171,7 @@ function init() {
                             result_list.innerHTML += ejs.views_search_result({ "query_results": response });
                         }
                         similar_listener();
-                        // put_listener_search();
-                        // put_change_display();
+                       
                     });
                     
 

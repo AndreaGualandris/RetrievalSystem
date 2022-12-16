@@ -53,9 +53,8 @@ app.get('/clustering', (req, res) => {
 
 app.get('/similar', (req, res) => {
 
-  const query = req.query.query;
-  const qf = "beds+address+price+state" //campi sul quale voglio che siano simili 
-  const id = req.query.id; //id del documento che voglio filtrare
+  const qf = "beds+address+price+state" 
+  const id = req.query.id; 
   const fl = "beds+address+price+state"
   axios({
     method: 'get',
@@ -86,10 +85,7 @@ app.get('/cities', (req, res) => {
 
 
 app.post('/filtering', (req, res) => {
-  // const query = req.query.query;
   const obj = req.body;
-
-  console.log(obj.city)
 
   let filter_city, filter_state, filter_price, filter_beds = "";
   let filter = "";
@@ -117,10 +113,7 @@ app.post('/filtering', (req, res) => {
     query = obj.query;
   }
   console.log("query " + query)
-  // const filter = `fq=city:${obj.city}&fq=state:${obj.state}` //&fq=price:[${obj.price.min} TO ${obj.price.max}]&fq=beds:${obj.beds}
-  const qf = "title^2.5+beds^2.0+address^1.5+price^1.0" // field qf su parser edismax
-  const defType = "edismax";
-  const mm = "2";
+
   axios({
     method: 'get',
     url: `http://localhost:8983/solr/houses/select?qf=title&q=${query}&${filter}q.op=OR&rows=50&indent=true&defType=edismax`
@@ -160,66 +153,4 @@ server.on('listening', function () {
 });
 
 server.listen(app.get('port'));
-
-
-
-
-//////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-// app.get('/search', (req, res) => {
-//   const query = req.query.query;
-//   var obj = {};
-//   const filter = `fq=city:Chicago&fq=state:${obj.state}&fq=price:[${obj.price.min} TO ${obj.price.max}]&fq=beds:[${obj.beds.min} TO ${obj.beds.max}]`
-
-//  axios({
-//   method: 'get',
-//   // url: `http://localhost:8983/solr/houses/query?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=AND&q=*${query}*&defType=edismax`
-//   // url: `http://localhost:8983/solr/houses/clustering?q=*:*&rows=80`
-//   // url: `http://localhost:8983/solr/houses/query?q=*:*&rows=80&fq=city:Chicago&fq=state:IL&fq=price:[100000 TO 200000]&fq=beds:[2 TO 3]`
-//   url: `http://localhost:8983/solr/houses/select?qf=title^2.5+beds^2.0+address^1.5+price^1.0&rows=50&indent=true&q.op=AND&q=${query}&defType=edismax&fq=city:Chicago&fq=beds:2`
-
-//  }).then((response) => {
-//     console.log(response.data.response.docs);
-//     res.status(200).json(response.data.response.docs)
-//  })
-// });
-
-
-// app.get('/clustering', (req, res) => {
-//   const query = req.query.query;
-//   const field = req.query.field; //richiedre il campo da filtrare tramite menu a tendina
-
-//  axios({
-//   method: 'get',
-//   // url: `http://localhost:8983/solr/Houses_collection/select?q=${query}&facet=true&facet.field=${field}` 
-//   url: `http://localhost:8983/solr/houses/select?q=${query}&facet=true&facet.field=title` //cercare di aggiungere il copy field per il clustering altrimenti sticazzi proviamo come sotto
-//   // url: `http://localhost:8983/solr/houses_collection/select?q=*:*&facet=true&facet.field=beds&facet.field=price&facet.field=address&facet.field=title`  da testsare se funzionano cosi i facet.field
-
-
-//  }).then((response) => {
-//     console.log(response.data.response.docs);
-//     res.status(200).json(response.data.response.docs)
-//  })
-// });
-
-
-// app.get('/similar', (req, res) =>{
-
-//   const query = req.query.query;
-//   const qf = "beds + city + state + price" //campi sul quale voglio che siano simili 
-//   const id = req.query.id; //id del documento che voglio filtrare
-
-//   axios({
-//     method: 'get',
-//     url: `http://localhost:8983/solr/houses/query?q={!mlt qf=${qf} mintf=1 mindf=1}${id}`
-//   }).then((response) => {
-//     console.log(response.data.response.docs);
-//     res.status(200).json(response.data.response.docs)
-// })
-// });
 
