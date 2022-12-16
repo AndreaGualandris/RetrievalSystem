@@ -1,9 +1,3 @@
-#scrape link https://www.apartmentfinder.com/Illinois/Chicago
-# list of apartaments layout-row layout-wrap
-
-
-# flex-12 ellipses layout-hidden-xs desktop-title a::attr(href)      url pagina casa
-
 import scrapy
 from scrapy.selector import Selector
 
