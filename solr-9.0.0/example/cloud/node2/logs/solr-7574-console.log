@@ -1,10 +1,10 @@
-OpenJDK 64-Bit Server VM warning: Failed to reserve shared memory. (error = 1)
-OpenJDK 64-Bit Server VM warning: Failed to reserve shared memory. (error = 12)
-OpenJDK 64-Bit Server VM warning: Failed to reserve shared memory. (error = 12)
-2022-12-15 19:11:36.852 INFO  (main) [] o.e.j.u.log Logging initialized @620ms to org.eclipse.jetty.util.log.Slf4jLog
-2022-12-15 19:11:36.998 INFO  (main) [] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 11.0.17+8-post-Ubuntu-1ubuntu220.04
-2022-12-15 19:11:37.209 INFO  (main) [] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2022-12-15 19:11:37.218 INFO  (main) [] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.0.0
-2022-12-15 19:11:37.218 INFO  (main) [] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in cloud mode on port 7574
-2022-12-15 19:11:37.218 INFO  (main) [] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /home/alan/Desktop/5_semestre/Information_Retrival/project/RetrievalSystem/solr-9.0.0
-2022-12-15 19:11:37.218 INFO  (main) [] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2022-12-15T19:11:37.218815Z
+[0.003s][warning][pagesize] UseLargePages disabled, no large pages configured and available on the system.
+WARNING: A command line option has enabled the Security Manager
+WARNING: The Security Manager is deprecated and will be removed in a future release
+2022-12-16 12:24:27.016 INFO  (main) [] o.e.j.u.log Logging initialized @974ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-12-16 12:24:27.216 INFO  (main) [] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17.0.5+8-Ubuntu-2ubuntu120.04
+2022-12-16 12:24:27.591 INFO  (main) [] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2022-12-16 12:24:27.603 INFO  (main) [] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.0.0
+2022-12-16 12:24:27.603 INFO  (main) [] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in cloud mode on port 7574
+2022-12-16 12:24:27.603 INFO  (main) [] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /home/andrea/Documenti/Usi/3 anno/1_semestre/Information_Retrieval/proj/RetrievalSystem/solr-9.0.0
+2022-12-16 12:24:27.603 INFO  (main) [] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2022-12-16T12:24:27.603869966Z
